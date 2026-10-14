@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw 用户手册操作地图</title>
+  <desc id="desc">A user-facing operation map showing the recommended sequence from system deployment to model, QYRAG, Runtime, optional capabilities, and final verification.</desc>
+  <defs>
+    <marker id="arrow-manual" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d8e2ec;stroke-width:1.8}
+      .step{fill:#eff6ff;stroke:#2563eb;stroke-width:1.8}
+      .required{fill:#f0fdf4;stroke:#16a34a;stroke-width:1.8}
+      .optional{fill:#fff7ed;stroke:#ea580c;stroke-width:1.8}
+      .verify{fill:#faf5ff;stroke:#9333ea;stroke-width:1.8}
+      .text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}
+      .title{font-size:25px;font-weight:800}
+      .sub{font-size:14px;fill:#475569}
+      .label{font-size:16px;font-weight:800}
+      .small{font-size:12.5px;fill:#475569}
+      .num{font-size:14px;font-weight:800;fill:#fff}
+      .line{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow-manual)}
+      .soft{stroke:#94a3b8;stroke-width:2;fill:none;stroke-dasharray:5 5;marker-end:url(#arrow-manual)}
+      .badge{fill:#2563eb}
+    </style>
+  </defs>
+
+  <rect class="bg" width="1120" height="620" rx="22"/>
+  <text class="text title" x="42" y="46">用户手册操作地图</text>
+  <text class="text sub" x="42" y="70">面向首次部署和初始化：先把系统跑起来，再接入基础能力，最后部署到实例中验证。</text>
+
+  <rect class="panel" x="40" y="104" width="1040" height="438" rx="18"/>
+
+  <rect class="step" x="76" y="176" width="164" height="92" rx="13"/>
+  <circle class="badge" cx="104" cy="204" r="15"/>
+  <text class="text num" x="100" y="209">1</text>
+  <text class="text label" x="158" y="203" text-anchor="middle">系统部署</text>
+  <text class="text small" x="158" y="228" text-anchor="middle">执行 deploy.sh</text>
+  <text class="text small" x="158" y="248" text-anchor="middle">确认 WebUI 可访问</text>
+
+  <rect class="required" x="292" y="176" width="164" height="92" rx="13"/>
+  <circle class="badge" cx="320" cy="204" r="15"/>
+  <text class="text num" x="316" y="209">2</text>
+  <text class="text label" x="374" y="203" text-anchor="middle">配置 Models</text>
+  <text class="text small" x="374" y="228" text-anchor="middle">接入模型供应商</text>
+  <text class="text small" x="374" y="248" text-anchor="middle">获取并测试模型</text>
+
+  <rect class="required" x="508" y="176" width="164" height="92" rx="13"/>
+  <circle class="badge" cx="536" cy="204" r="15"/>
+  <text class="text num" x="532" y="209">3</text>
+  <text class="text label" x="590" y="203" text-anchor="middle">连接 QYRAG</text>
+  <text class="text small" x="590" y="228" text-anchor="middle">设置外部知识库</text>
+  <text class="text small" x="590" y="248" text-anchor="middle">测试连接成功</text>
+
+  <rect class="required" x="724" y="176" width="164" height="92" rx="13"/>
+  <circle class="badge" cx="752" cy="204" r="15"/>
+  <text class="text num" x="748" y="209">4</text>
+  <text class="text label" x="806" y="203" text-anchor="middle">创建实例</text>
+  <text class="text small" x="806" y="228" text-anchor="middle">NineClaw 页面创建</text>
+  <text class="text small" x="806" y="248" text-anchor="middle">确认运行中</text>
+
+  <rect class="optional" x="184" y="346" width="188" height="98" rx="13"/>
+  <text class="text label" x="278" y="376" text-anchor="middle">按需配置能力</text>
+  <text class="text small" x="278" y="402" text-anchor="middle">RAG / Skill / MCP</text>
+  <text class="text small" x="278" y="424" text-anchor="middle">Web Search 信源</text>
+
+  <rect class="optional" x="466" y="346" width="188" height="98" rx="13"/>
+  <text class="text label" x="560" y="376" text-anchor="middle">部署到实例</text>
+  <text class="text small" x="560" y="402" text-anchor="middle">选择运行中实例</text>
+  <text class="text small" x="560" y="424" text-anchor="middle">等待部署完成</text>
+
+  <rect class="verify" x="748" y="346" width="188" height="98" rx="13"/>
+  <text class="text label" x="842" y="376" text-anchor="middle">验证使用</text>
+  <text class="text small" x="842" y="402" text-anchor="middle">打开实例 WebUI</text>
+  <text class="text small" x="842" y="424" text-anchor="middle">测试对话和工具</text>
+
+  <path class="line" d="M240 222 H292"/>
+  <path class="line" d="M456 222 H508"/>
+  <path class="line" d="M672 222 H724"/>
+  <path class="line" d="M806 268 C806 312 654 322 560 346"/>
+  <path class="line" d="M372 395 H466"/>
+  <path class="line" d="M654 395 H748"/>
+  <path class="soft" d="M590 268 C590 304 360 310 278 346"/>
+
+  <text class="text sub" x="84" y="506">绿色步骤是基础初始化，橙色步骤按业务需要选择。所有能力最终都要部署到运行中的 NineClaw 实例后才能被 Agent 使用。</text>
+  <text class="text sub" x="84" y="528">如果某一步失败，优先回到对应页面的“常见排查”表确认服务地址、实例状态和网络连通性。</text>
+</svg>

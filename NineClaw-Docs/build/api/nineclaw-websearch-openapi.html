@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr" class="docs-wrapper plugin-docs plugin-id-api docs-version-current docs-doc-page docs-doc-id-nineclaw-websearch-openapi" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Nineclaw WebSearch | NineClaw</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://your-docusaurus-site.example.com/docs/api/nineclaw-websearch-openapi"><meta data-rh="true" property="og:locale" content="zh_CN"><meta data-rh="true" name="docusaurus_locale" content="zh-CN"><meta data-rh="true" name="docsearch:language" content="zh-CN"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-api-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-api-current"><meta data-rh="true" property="og:title" content="Nineclaw WebSearch | NineClaw"><meta data-rh="true" name="description" content="---"><meta data-rh="true" property="og:description" content="---"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://your-docusaurus-site.example.com/docs/api/nineclaw-websearch-openapi"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/api/nineclaw-websearch-openapi" hreflang="zh-CN"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/api/nineclaw-websearch-openapi" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Nineclaw WebSearch","item":"https://your-docusaurus-site.example.com/docs/api/nineclaw-websearch-openapi"}]}</script><link rel="stylesheet" href="/docs/assets/css/styles.98f49257.css">
+<script src="/docs/assets/js/runtime~main.e53e1768.js" defer="defer"></script>
+<script src="/docs/assets/js/main.7ae906b1.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/docs/"><div class="navbar__logo"><img src="/docs/img/logo-small.jpg" alt="NineClaw Logo" class="themedComponent_mlkZ themedComponent--light_NVdE" style="height:36px"><img src="/docs/img/logo-small.jpg" alt="NineClaw Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU" style="height:36px"></div><b class="navbar__title text--truncate">NineClaw</b></a><a class="navbar__item navbar__link" href="/docs/guide/intro">开发文档</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/api/intro">API</a><a class="navbar__item navbar__link" href="/docs/manual/intro">用户手册</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/QY-NineClaw/NineClaw-Docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api/intro"><span title="概览" class="linkLabel_WmDU">概览</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api/nineclaw-manager-openapi"><span title="Nineclaw Manager" class="linkLabel_WmDU">Nineclaw Manager</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/api/nineclaw-websearch-openapi"><span title="Nineclaw WebSearch" class="linkLabel_WmDU">Nineclaw WebSearch</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/api/hermes-gateway"><span title="Nineclaw Runtime" class="categoryLinkLabel_W154">Nineclaw Runtime</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/hermes-gateway"><span title="Hermes Gateway" class="linkLabel_WmDU">Hermes Gateway</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/hermes-dashboard"><span title="Hermes Dashboard" class="linkLabel_WmDU">Hermes Dashboard</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/api/hermes-webui"><span title="Hermes WebUI" class="linkLabel_WmDU">Hermes WebUI</span></a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/api/QY-RAG-openapi"><span title="QY-RAG" class="linkLabel_WmDU">QY-RAG</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Nineclaw WebSearch</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Nineclaw WebSearch</h1></header>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="get-sources">GET /sources<a href="#get-sources" class="hash-link" aria-label="GET /sources的直接链接" title="GET /sources的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#0f766e;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">get</span><code style="font-size:1rem">/sources</code></div><h2>List Sources</h2><p>暂无接口说明。</p><h3>接口地址</h3><p>原始路径：<code>/sources</code><br>请求路径：<code>http://localhost:8510/ws-api/sources</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>无请求体。</p><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>any</code></p><pre><code>null</code></pre></div><h3>请求示例</h3><pre><code>curl -X GET &quot;http://localhost:8510/ws-api/sources&quot;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-sources">POST /sources<a href="#post-sources" class="hash-link" aria-label="POST /sources的直接 链接" title="POST /sources的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/sources</code></div><h2>Create Source</h2><p>Create a new source card (directory + initial config.json).</p><h3>接口地址</h3><p>原始路径：<code>/sources</code><br>请求路径：<code>http://localhost:8510/ws-api/sources</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>name</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>description</code></td><td><code>string | null</code></td><td>否</td><td>-</td></tr><tr><td><code>tags</code></td><td><code>array&lt;string&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>201</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>any</code></p><pre><code>null</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/sources&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;source_id&quot;: &quot;&lt;Source Id&gt;&quot;,
+    &quot;name&quot;: &quot;&lt;Name&gt;&quot;,
+    &quot;description&quot;: &quot;string&quot;,
+    &quot;tags&quot;: []
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="get-sourcessource_id">GET /sources/{source_id}<a href="#get-sourcessource_id" class="hash-link" aria-label="GET /sources/{source_id}的直接链接" title="GET /sources/{source_id}的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#0f766e;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">get</span><code style="font-size:1rem">/sources/{source_id}</code></div><h2>Get Source Detail</h2><p>暂无接口说明。</p><h3>接口地址</h3><p>原始路径：<code>/sources/{source_id}</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/{source_id}</code></p><h3>请求参数</h3><table><thead><tr><th>参数名</th><th>位置</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td>path</td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>请求体</h3><p>无请求体。</p><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>any</code></p><pre><code>null</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X GET &quot;http://localhost:8510/ws-api/sources/&lt;source_id&gt;&quot;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="put-sourcessource_id">PUT /sources/{source_id}<a href="#put-sourcessource_id" class="hash-link" aria-label="PUT /sources/{source_id}的直接链接" title="PUT /sources/{source_id}的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#7c3aed;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">put</span><code style="font-size:1rem">/sources/{source_id}</code></div><h2>Update Source</h2><p>Update source card metadata.</p><h3>接口地址</h3><p>原始路径：<code>/sources/{source_id}</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/{source_id}</code></p><h3>请求参数</h3><table><thead><tr><th>参数名</th><th>位置</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td>path</td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>name</code></td><td><code>string | null</code></td><td>否</td><td>-</td></tr><tr><td><code>description</code></td><td><code>string | null</code></td><td>否</td><td>-</td></tr><tr><td><code>tags</code></td><td><code>array&lt;string&gt; | null</code></td><td>否</td><td>-</td></tr><tr><td><code>enabled</code></td><td><code>boolean | null</code></td><td>否</td><td>-</td></tr><tr><td><code>weight</code></td><td><code>number | null</code></td><td>否</td><td>-</td></tr><tr><td><code>url_base</code></td><td><code>string | null</code></td><td>否</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>any</code></p><pre><code>null</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X PUT &quot;http://localhost:8510/ws-api/sources/&lt;source_id&gt;&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;name&quot;: &quot;string&quot;,
+    &quot;description&quot;: &quot;string&quot;,
+    &quot;tags&quot;: [
+      &quot;string&quot;
+    ],
+    &quot;enabled&quot;: true,
+    &quot;weight&quot;: 0,
+    &quot;url_base&quot;: &quot;string&quot;
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="delete-sourcessource_id">DELETE /sources/{source_id}<a href="#delete-sourcessource_id" class="hash-link" aria-label="DELETE /sources/{source_id}的直接链接" title="DELETE /sources/{source_id}的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#dc2626;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">delete</span><code style="font-size:1rem">/sources/{source_id}</code></div><h2>Delete Source</h2><p>Delete an entire source card directory.</p><h3>接口地址</h3><p>原始路径：<code>/sources/{source_id}</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/{source_id}</code></p><h3>请求参数</h3><table><thead><tr><th>参数名</th><th>位置</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td>path</td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>请求体</h3><p>无请求体。</p><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>204</code> <!-- -->Successful Response</h4><p>该响应未定义响应体。</p></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X DELETE &quot;http://localhost:8510/ws-api/sources/&lt;source_id&gt;&quot;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-search">POST /search<a href="#post-search" class="hash-link" aria-label="POST /search的直接链接" title="POST /search的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/search</code></div><h2>Search</h2><p>暂无接口说明。</p><h3>接口地址</h3><p>原始路径：<code>/search</code><br>请求路径：<code>http://localhost:8510/ws-api/search</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>query</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>tags</code></td><td><code>array&lt;string&gt; | null</code></td><td>否</td><td>-</td></tr><tr><td><code>include_sources</code></td><td><code>array&lt;string&gt; | null</code></td><td>否</td><td>-</td></tr><tr><td><code>exclude_sources</code></td><td><code>array&lt;string&gt;</code></td><td>否</td><td>-</td></tr><tr><td><code>limit</code></td><td><code>integer</code></td><td>否</td><td>-</td></tr><tr><td><code>request_timeout_ms</code></td><td><code>integer</code></td><td>否</td><td>-</td></tr><tr><td><code>parse_timeout_ms</code></td><td><code>integer</code></td><td>否</td><td>-</td></tr><tr><td><code>merge_result</code></td><td><code>boolean</code></td><td>否</td><td>-</td></tr><tr><td><code>proxy_pool</code></td><td><code>array&lt;string&gt;</code></td><td>否</td><td>-</td></tr><tr><td><code>cover_default_proxy</code></td><td><code>boolean</code></td><td>否</td><td>-</td></tr><tr><td><code>cover_default_weight</code></td><td><code>object</code></td><td>否</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>  字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>query</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>results</code></td><td><code>array&lt;object&gt;</code></td><td>是</td><td>-</td></tr><tr><td><code>stats</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;query&quot;: &quot;&lt;Query&gt;&quot;,
+  &quot;results&quot;: [
+    {
+      &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+      &quot;title&quot;: &quot;&lt;Title&gt;&quot;,
+      &quot;desc&quot;: &quot;string&quot;,
+      &quot;score&quot;: 0,
+      &quot;sources&quot;: []
+    }
+  ],
+  &quot;stats&quot;: []
+}</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/search&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;query&quot;: &quot;&lt;Query&gt;&quot;,
+    &quot;tags&quot;: [
+      &quot;string&quot;
+    ],
+    &quot;include_sources&quot;: [
+      &quot;string&quot;
+    ],
+    &quot;exclude_sources&quot;: [],
+    &quot;limit&quot;: 20,
+    &quot;request_timeout_ms&quot;: 10000,
+    &quot;parse_timeout_ms&quot;: 5000,
+    &quot;merge_result&quot;: true,
+    &quot;proxy_pool&quot;: [],
+    &quot;cover_default_proxy&quot;: false,
+    &quot;cover_default_weight&quot;: {}
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-searchtest_score">POST /search/test_score<a href="#post-searchtest_score" class="hash-link" aria-label="POST /search/test_score的直接链接" title="POST /search/test_score的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/search/test_score</code></div><h2>Test Score</h2><p>Re-score existing search results with explicit per-source weights.</p><h3>接口地址</h3><p>原始路径：<code>/search/test_score</code><br>请求路径：<code>http://localhost:8510/ws-api/search/test_score</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>sources</code></td><td><code>array&lt;object&gt;</code></td><td>是</td><td>-</td></tr><tr><td><code>results</code></td><td><code>array&lt;object&gt;</code></td><td>是</td><td>-</td></tr><tr><td><code>limit</code></td><td><code>integer</code></td><td>否</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>query</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>results</code></td><td><code>array&lt;object&gt;</code></td><td>是</td><td>-</td></tr><tr><td><code>stats</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;query&quot;: &quot;&lt;Query&gt;&quot;,
+  &quot;results&quot;: [
+    {
+      &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+      &quot;title&quot;: &quot;&lt;Title&gt;&quot;,
+      &quot;desc&quot;: &quot;string&quot;,
+      &quot;score&quot;: 0,
+      &quot;sources&quot;: []
+    }
+  ],
+  &quot;stats&quot;: []
+}</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/search/test_score&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;sources&quot;: [
+      {
+        &quot;source_id&quot;: &quot;&lt;Source Id&gt;&quot;,
+        &quot;weight&quot;: 0
+      }
+    ],
+    &quot;results&quot;: [
+      {
+        &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+        &quot;title&quot;: &quot;&lt;Title&gt;&quot;,
+        &quot;desc&quot;: &quot;string&quot;,
+        &quot;score&quot;: 0,
+        &quot;sources&quot;: []
+      }
+    ],
+    &quot;limit&quot;: 20
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-extract_detail">POST /extract_detail<a href="#post-extract_detail" class="hash-link" aria-label="POST /extract_detail的直接链接" title="POST /extract_detail的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/extract_detail</code></div><h2>Extract Detail</h2><p>暂无接口说明。</p><h3>接口地址</h3><p>原始路径：<code>/extract_detail</code><br>请求路径：<code>http://localhost:8510/ws-api/extract_detail</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>urls</code></td><td><code>array&lt;string&gt;</code></td><td>是</td><td>-</td></tr><tr><td><code>proxies</code></td><td><code>array&lt;string&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>results</code></td><td><code>array&lt;object&gt;</code></td><td>是</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;results&quot;: [
+    {
+      &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+      &quot;title&quot;: &quot;string&quot;,
+      &quot;content&quot;: &quot;string&quot;,
+      &quot;content_xpath&quot;: &quot;string&quot;,
+      &quot;publish_date&quot;: &quot;string&quot;,
+      &quot;error&quot;: &quot;string&quot;
+    }
+  ]
+}</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/extract_detail&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;urls&quot;: [
+      &quot;string&quot;
+    ],
+    &quot;proxies&quot;: []
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-extract_listlink">POST /extract_listlink<a href="#post-extract_listlink" class="hash-link" aria-label="POST /extract_listlink的直接链接" title="POST /extract_listlink的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/extract_listlink</code></div><h2>Extract Listlink</h2><p>暂无接口说明。</p><h3>接口地址</h3><p>原始路径：<code>/extract_listlink</code><br>请求路径：<code>http://localhost:8510/ws-api/extract_listlink</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>urls</code></td><td><code>array&lt;string&gt;</code></td><td>是</td><td>-</td></tr><tr><td><code>proxies</code></td><td><code>array&lt;string&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>results</code></td><td><code>array&lt;object&gt;</code></td><td>是</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;results&quot;: [
+    {
+      &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+      &quot;link_blocks&quot;: [
+        null
+      ],
+      &quot;error&quot;: &quot;string&quot;
+    }
+  ]
+}</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/extract_listlink&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;urls&quot;: [
+      &quot;string&quot;
+    ],
+    &quot;proxies&quot;: []
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-sourcesfetch">POST /sources/fetch<a href="#post-sourcesfetch" class="hash-link" aria-label="POST /sources/fetch的直接链接" title="POST /sources/fetch的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/sources/fetch</code></div><h2>Fetch</h2><p>Execute the request config with a test query, save config.json + response.html.</p><h3>接口地址</h3><p>原始路径：<code>/sources/fetch</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/fetch</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>config</code></td><td><code>object</code></td><td>是</td><td>-</td></tr><tr><td><code>query</code></td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>status_code</code></td><td><code>integer</code></td><td>是</td><td>-</td></tr><tr><td><code>html</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>saved</code></td><td><code>boolean</code></td><td>是</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;status_code&quot;: 0,
+  &quot;html&quot;: &quot;&lt;Html&gt;&quot;,
+  &quot;saved&quot;: true
+}</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/sources/fetch&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;source_id&quot;: &quot;&lt;Source Id&gt;&quot;,
+    &quot;config&quot;: {
+      &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;params&quot;: [],
+      &quot;headers&quot;: [],
+      &quot;body&quot;: &quot;&quot;,
+      &quot;body_type&quot;: &quot;application/json&quot;,
+      &quot;proxy_pool&quot;: []
+    },
+    &quot;query&quot;: &quot;&lt;Query&gt;&quot;
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-sourcessave_extractor">POST /sources/save_extractor<a href="#post-sourcessave_extractor" class="hash-link" aria-label="POST /sources/save_extractor的直接链接" title="POST /sources/save_extractor的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/sources/save_extractor</code></div><h2>Save Extractor</h2><p>Save extract.py code to the source directory.</p><h3>接口地址</h3><p>原始路径：<code>/sources/save_extractor</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/save_extractor</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>code</code></td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>any</code></p><pre><code>null</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/sources/save_extractor&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;source_id&quot;: &quot;&lt;Source Id&gt;&quot;,
+    &quot;code&quot;: &quot;&lt;Code&gt;&quot;
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-sourcestest">POST /sources/test<a href="#post-sourcestest" class="hash-link" aria-label="POST /sources/test的直接链接" title="POST /sources/test的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/sources/test</code></div><h2>Test Source</h2><p>Execute full search flow: fetch with query + run extract.py, return results.</p><h3>接口地址</h3><p>原始路径：<code>/sources/test</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/test</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td><code>string</code></td><td>是</td><td>-</td></tr><tr><td><code>query</code></td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>success</code></td><td><code>boolean</code></td><td>是</td><td>-</td></tr><tr><td><code>results</code></td><td><code>array&lt;object&gt; | null</code></td><td>否</td><td>-</td></tr><tr><td><code>error</code></td><td><code>string | null</code></td><td>否</td><td>-</td></tr><tr><td><code>request_time_ms</code></td><td><code>integer | null</code></td><td>否</td><td>-</td></tr><tr><td><code>parse_time_ms</code></td><td><code>integer | null</code></td><td>否</td><td>-</td></tr><tr><td><code>result_count</code></td><td><code>integer | null</code></td><td>否</td><td>-</td></tr><tr><td><code>status_code</code></td><td><code>integer | null</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;success&quot;: true,
+  &quot;results&quot;: [
+    {
+      &quot;url&quot;: &quot;&lt;Url&gt;&quot;,
+      &quot;title&quot;: &quot;&lt;Title&gt;&quot;,
+      &quot;desc&quot;: null
+    }
+  ],
+  &quot;error&quot;: &quot;string&quot;,
+  &quot;request_time_ms&quot;: 0,
+  &quot;parse_time_ms&quot;: 0,
+  &quot;result_count&quot;: 0,
+  &quot;status_code&quot;: 0
+}</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/sources/test&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;source_id&quot;: &quot;&lt;Source Id&gt;&quot;,
+    &quot;query&quot;: &quot;&lt;Query&gt;&quot;
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-sourcesdebug_extractor">POST /sources/debug_extractor<a href="#post-sourcesdebug_extractor" class="hash-link" aria-label="POST /sources/debug_extractor的直接链接" title="POST /sources/debug_extractor的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#2563eb;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">post</span><code style="font-size:1rem">/sources/debug_extractor</code></div><h2>Debug Extractor</h2><p>Run saved extract.py against local response.html via subprocess with real-time SSE streaming.</p><h3>接口地址</h3><p>原始路径：<code>/sources/debug_extractor</code><br>请求路径：<code>http://localhost:8510/ws-api/sources/debug_extractor</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>Content-Type：<code>application/json</code>，必填</p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>source_id</code></td><td><code>string</code></td><td>是</td><td>-</td></tr></tbody></table><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>any</code></p><pre><code>null</code></pre></div><div style="margin-bottom:1.25rem"><h4><code>422</code> <!-- -->Validation Error</h4><p>Content-Type：<code>application/json</code></p><table><thead><tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr></thead><tbody><tr><td><code>detail</code></td><td><code>array&lt;object&gt;</code></td><td>否</td><td>-</td></tr></tbody></table><pre><code>{
+  &quot;detail&quot;: [
+    {
+      &quot;loc&quot;: [
+        null
+      ],
+      &quot;msg&quot;: &quot;&lt;Message&gt;&quot;,
+      &quot;type&quot;: &quot;&lt;Error Type&gt;&quot;
+    }
+  ]
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X POST &quot;http://localhost:8510/ws-api/sources/debug_extractor&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{
+    &quot;source_id&quot;: &quot;&lt;Source Id&gt;&quot;
+  }&#x27;</code></pre></section>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="get-health">GET /health<a href="#get-health" class="hash-link" aria-label="GET /health的直接链接" title="GET /health的直接链接" translate="no">​</a></h2>
+<section style="border:1px solid var(--ifm-color-emphasis-300);border-radius:14px;padding:1.25rem;margin-bottom:1.5rem"><div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap"><span style="background-color:#0f766e;color:#fff;border-radius:999px;padding:0.2rem 0.65rem;font-size:0.85rem;font-weight:700;text-transform:uppercase">get</span><code style="font-size:1rem">/health</code></div><h2>Health Check</h2><p>暂无接口说明。</p><h3>接口地址</h3><p>原始路径：<code>/health</code><br>请求路径：<code>http://localhost:8510/ws-api/health</code></p><h3>请求参数</h3><p>无路径、查询或请求头参数。</p><h3>请求体</h3><p>无请求体。</p><h3>返回响应</h3><div style="margin-bottom:1.25rem"><h4><code>200</code> <!-- -->Successful Response</h4><p>Content-Type：<code>application/json</code></p><p>类型：<code>object</code></p><pre><code>{
+  &quot;additionalProp1&quot;: &quot;string&quot;
+}</code></pre></div><h3>请求示例</h3><pre><code>curl -X GET &quot;http://localhost:8510/ws-api/health&quot;</code></pre></section></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/QY-NineClaw/NineClaw-Docs/tree/main/api/nineclaw-websearch-openapi.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/api/nineclaw-manager-openapi"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Nineclaw Manager</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/api/hermes-gateway"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">Hermes Gateway</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#get-sources" class="table-of-contents__link toc-highlight">GET /sources</a></li><li><a href="#post-sources" class="table-of-contents__link toc-highlight">POST /sources</a></li><li><a href="#get-sourcessource_id" class="table-of-contents__link toc-highlight">GET /sources/{source_id}</a></li><li><a href="#put-sourcessource_id" class="table-of-contents__link toc-highlight">PUT /sources/{source_id}</a></li><li><a href="#delete-sourcessource_id" class="table-of-contents__link toc-highlight">DELETE /sources/{source_id}</a></li><li><a href="#post-search" class="table-of-contents__link toc-highlight">POST /search</a></li><li><a href="#post-searchtest_score" class="table-of-contents__link toc-highlight">POST /search/test_score</a></li><li><a href="#post-extract_detail" class="table-of-contents__link toc-highlight">POST /extract_detail</a></li><li><a href="#post-extract_listlink" class="table-of-contents__link toc-highlight">POST /extract_listlink</a></li><li><a href="#post-sourcesfetch" class="table-of-contents__link toc-highlight">POST /sources/fetch</a></li><li><a href="#post-sourcessave_extractor" class="table-of-contents__link toc-highlight">POST /sources/save_extractor</a></li><li><a href="#post-sourcestest" class="table-of-contents__link toc-highlight">POST /sources/test</a></li><li><a href="#post-sourcesdebug_extractor" class="table-of-contents__link toc-highlight">POST /sources/debug_extractor</a></li><li><a href="#get-health" class="table-of-contents__link toc-highlight">GET /health</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">文档</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/guide/intro">总览</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guide/architecture/routing">Traefik 路由</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">API</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api/intro">概览</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api/hermes-gateway">Hermes Gateway</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api/hermes-dashboard">Hermes Dashboard</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api/hermes-webui">Hermes WebUI</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">用户手册</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/manual/intro">概览</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/system-deployment">系统部署</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/knowledge">知识库</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/skills">Skills</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/models">Models管理</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">更多</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/QY-NineClaw/NineClaw-Docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 NineClaw. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

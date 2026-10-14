@@ -1,0 +1,25 @@
+{
+  "name": "Mwmbl",
+  "description": "Mwmbl 开源搜索引擎",
+  "enabled": true,
+  "url_base": "https://mwmbl.org",
+  "request": {
+    "url": "https://api.mwmbl.org/search/",
+    "method": "GET",
+    "params": [
+      {
+        "key": "s",
+        "value": "{query}"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "NineClaw-WebSearch/1.0"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

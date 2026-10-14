@@ -1,0 +1,25 @@
+{
+  "name": "搜狗微信",
+  "description": "微信公众号文章搜索",
+  "enabled": true,
+  "url_base": "https://weixin.sogou.com",
+  "tags": ["social"],
+  "request": {
+    "url": "https://weixin.sogou.com/weixin",
+    "method": "GET",
+    "params": [
+      { "key": "query", "value": "{query}" },
+      { "key": "page", "value": "1" },
+      { "key": "type", "value": "2" }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

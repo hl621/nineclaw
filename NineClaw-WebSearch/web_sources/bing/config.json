@@ -1,0 +1,25 @@
+{
+  "name": "bing",
+  "description": "Bing web search",
+  "enabled": true,
+  "url_base": "https://www.bing.com",
+  "request": {
+    "url": "https://www.bing.com/search",
+    "method": "GET",
+    "params": [
+      {
+        "key": "q",
+        "value": "{query}"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

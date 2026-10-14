@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr" class="docs-wrapper plugin-docs plugin-id-manual docs-version-current docs-doc-page docs-doc-id-knowledge" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">RAG（知识库） | NineClaw</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://your-docusaurus-site.example.com/docs/manual/knowledge"><meta data-rh="true" property="og:locale" content="zh_CN"><meta data-rh="true" name="docusaurus_locale" content="zh-CN"><meta data-rh="true" name="docsearch:language" content="zh-CN"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-manual-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-manual-current"><meta data-rh="true" property="og:title" content="RAG（知识库） | NineClaw"><meta data-rh="true" name="description" content="RAG 页面用于管理知识库。你可以在这里创建知识库、上传文档、查看解析结果、测试召回效果，并把知识库部署到 NineClaw 实例中。"><meta data-rh="true" property="og:description" content="RAG 页面用于管理知识库。你可以在这里创建知识库、上传文档、查看解析结果、测试召回效果，并把知识库部署到 NineClaw 实例中。"><link data-rh="true" rel="icon" href="/docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://your-docusaurus-site.example.com/docs/manual/knowledge"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/manual/knowledge" hreflang="zh-CN"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/manual/knowledge" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"RAG（知识库）","item":"https://your-docusaurus-site.example.com/docs/manual/knowledge"}]}</script><link rel="stylesheet" href="/docs/assets/css/styles.98f49257.css">
+<script src="/docs/assets/js/runtime~main.e53e1768.js" defer="defer"></script>
+<script src="/docs/assets/js/main.7ae906b1.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/docs/"><div class="navbar__logo"><img src="/docs/img/logo-small.jpg" alt="NineClaw Logo" class="themedComponent_mlkZ themedComponent--light_NVdE" style="height:36px"><img src="/docs/img/logo-small.jpg" alt="NineClaw Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU" style="height:36px"></div><b class="navbar__title text--truncate">NineClaw</b></a><a class="navbar__item navbar__link" href="/docs/guide/intro">开发文档</a><a class="navbar__item navbar__link" href="/docs/api/intro">API</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/manual/intro">用户手册</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/QY-NineClaw/NineClaw-Docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/manual/intro"><span title="概览" class="linkLabel_WmDU">概览</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/manual/deployment-requirements"><span title="部署要求" class="linkLabel_WmDU">部署要求</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/manual/system-deployment"><span title="系统部署" class="linkLabel_WmDU">系统部署</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/manual/operation-maintenance"><span title="运维管理" class="linkLabel_WmDU">运维管理</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/manual/qyrag-deployment"><span title="QYRAG 部署与运维" class="linkLabel_WmDU">QYRAG 部署与运维</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/manual/qyrag-implementation"><span title="QYRAG 配置" class="linkLabel_WmDU">QYRAG 配置</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/manual/models"><span title="系统配置" class="categoryLinkLabel_W154">系统配置</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/manual/models"><span title="Models管理" class="linkLabel_WmDU">Models管理</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/manual/asr-recording"><span title="ASR 语音转写" class="linkLabel_WmDU">ASR 语音转写</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/manual/nineclaw"><span title="NineClaw" class="linkLabel_WmDU">NineClaw</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/manual/skills"><span title="Skill（技能库）" class="linkLabel_WmDU">Skill（技能库）</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/manual/knowledge"><span title="RAG（知识库）" class="linkLabel_WmDU">RAG（知识库）</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/manual/mcps"><span title="MCP（MCP 工具）" class="linkLabel_WmDU">MCP（MCP 工具）</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/manual/websearch"><span title="Web Search（信源管理）" class="linkLabel_WmDU">Web Search（信源管理）</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">系统配置</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">RAG（知识库）</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>RAG（知识库）</h1></header>
+<p>RAG 页面用于管理知识库。你可以在这里创建知识库、上传文档、查看解析结果、测试召回效果，并把知识库部署到 NineClaw 实例中。</p>
+<p><strong>使用前提：</strong> 知识库底层依赖 <strong>QYRAG / RAGFlow</strong>。须先 <a class="" href="/docs/manual/qyrag-deployment">QYRAG 部署</a>，再 <a class="" href="/docs/manual/qyrag-implementation">QYRAG 配置</a> 完成对接。日常上传、问答在 NineClaw WebUI 完成。</p>
+<p><strong>上传格式一览：</strong> <a href="#kb-supported-formats" class="">支持的文件格式（RAGFlow / NineClaw）</a> — 用户可直接打开该节查看 WebUI 可上传列表与 RAGFlow 官方文档链接。</p>
+<p>配置知识库后，还需点击 <strong>部署</strong> 并选择 <strong>运行中</strong> 的实例，智能体才能在对话中检索文档。也可在 <a class="" href="/docs/manual/nineclaw">NineClaw 创建实例</a> 向导的步骤 4 中勾选 RAG。</p>
+<p>访问地址示例：<code>http://xxx:8510/knowledge</code></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="进入页面">进入页面<a href="#进入页面" class="hash-link" aria-label="进入页面的直接链接" title="进入页面的直接链接" translate="no">​</a></h2>
+<ol>
+<li class="">打开 NineClaw WebUI。</li>
+<li class="">在左侧导航中点击 <strong>RAG</strong>。</li>
+<li class="">页面会展示已有知识库卡片。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="RAG 列表页" src="/docs/assets/images/knowledge-overview-1ad90797bdc4f27d22d098412fe082c9.png" width="1440" height="900" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="页面上能看到什么">页面上能看到什么<a href="#页面上能看到什么" class="hash-link" aria-label="页面上能看到什么的直接链接" title="页面上能看到什么的直接链接" translate="no">​</a></h2>
+<table><thead><tr><th>区域</th><th>说明</th></tr></thead><tbody><tr><td>搜索框</td><td>按名称、描述或分组查找知识库</td></tr><tr><td>检索</td><td>进入全局检索（NineClaw RAG）；右上角齿轮可打开 <strong>检索设置</strong></td></tr><tr><td>+ 创建</td><td>新建知识库</td></tr><tr><td>部署</td><td>把知识库应用到 NineClaw 实例</td></tr><tr><td>知识库卡片</td><td>展示名称、<strong>构建状态</strong>（右上角徽章）、文档数量、更新时间等</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kb-card-status">卡片右上角：五种构建状态<a href="#kb-card-status" class="hash-link" aria-label="卡片右上角：五种构建状态的直接链接" title="卡片右上角：五种构建状态的直接链接" translate="no">​</a></h3>
+<p>列表卡片右上角只表示<strong>整个知识库</strong>的构建结果（由库内全部文档的解析结果汇总），不是单文件状态。<br>
+<!-- -->状态点与徽章采用红绿灯语义：<strong>绿</strong> = 已就绪，<strong>黄</strong> = 构建中 / 部分异常，<strong>红</strong> = 构建失败。</p>
+<table><thead><tr><th>状态（界面）</th><th>API <code>status</code></th><th>含义</th><th>什么时候会出现</th></tr></thead><tbody><tr><td><strong>待构建</strong></td><td><code>pending</code></td><td>还没开始构建</td><td>空库，或库内文档都还没开始解析</td></tr><tr><td><strong>构建中</strong></td><td><code>building</code></td><td>正在解析</td><td>至少有一个文档仍在解析</td></tr><tr><td><strong>已就绪</strong></td><td><code>success</code></td><td>构建成功</td><td><strong>全部</strong>文档解析成功</td></tr><tr><td><strong>部分异常</strong></td><td><code>part_success</code></td><td>有好有坏</td><td>有文档成功，也有文档失败</td></tr><tr><td><strong>构建失败</strong></td><td><code>fail</code></td><td>构建失败</td><td><strong>全部</strong>文档解析失败</td></tr></tbody></table>
+<p>使用建议：</p>
+<ul>
+<li class="">只有 <strong>已就绪</strong>（或至少关键文档已解析成功）时，问答和召回才比较稳定。</li>
+<li class="">出现 <strong>部分异常</strong> / <strong>构建失败</strong> 时，点进详情页看左侧文件树里哪几个文件失败，修好后点 <strong>重新解析</strong>。</li>
+<li class="">列表里只要还有库处于 <strong>构建中</strong>，页面会自动刷新状态，一般不用整页刷新。</li>
+</ul>
+<blockquote>
+<p>不要和详情页左侧的<strong>单文件</strong>状态混看：文件树用的是「待解析 / 解析中 / 已解析 / 解析失败 / 无切片」；卡片右上角是上面这五种库级状态。</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="首次使用前检查-qyrag">首次使用前检查 QYRAG<a href="#首次使用前检查-qyrag" class="hash-link" aria-label="首次使用前检查 QYRAG的直接链接" title="首次使用前检查 QYRAG的直接链接" translate="no">​</a></h2>
+<p>如果 RAG 页面加载失败、没有知识库，或提示无法连接外部知识库服务，说明 QYRAG 尚未对接成功。请完整阅读并按步骤操作 <a class="" href="/docs/manual/qyrag-implementation">QYRAG 配置</a>（含 RAGFlow 侧配置与 NineClaw <strong>设置 → 外部知识库</strong>）。</p>
+<p>常见需要确认的信息：</p>
+<table><thead><tr><th>配置项</th><th>说明</th></tr></thead><tbody><tr><td>服务地址</td><td>QYRAG / RAGFlow 地址，通常为 <code>http://&lt;服务器地址&gt;:8513</code></td></tr><tr><td>API Key</td><td>RAGFlow API Key（不是 DashScope Key，详见 QYRAG 配置文档）</td></tr><tr><td>测试连接</td><td>在 NineClaw 设置页点击 <strong>测试连接</strong> 并 <strong>保存</strong></td></tr></tbody></table>
+<p><img decoding="async" loading="lazy" alt="外部知识库设置" src="/docs/assets/images/knowledge-settings-865fd56aadddfd1ffa4751e8c304037a.png" width="1440" height="900" class="img_ev3q"></p>
+<p>详细填写步骤见 <a class="" href="/docs/manual/qyrag-implementation">QYRAG 配置</a> 第二节「NineClaw 外部知识库配置」，避免与本文重复维护。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="创建知识库">创建知识库<a href="#创建知识库" class="hash-link" aria-label="创建知识库的直接链接" title="创建知识库的直接链接" translate="no">​</a></h2>
+<ol>
+<li class="">在 RAG 列表页点击 <strong>+ 创建</strong>。</li>
+<li class="">填写知识库名称和描述。</li>
+<li class="">点击 <strong>创建</strong>。</li>
+<li class="">创建成功后，点击卡片进入详情页上传文档。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="新建知识库弹窗" src="/docs/assets/images/knowledge-create-dialog-69c3cf523e39bab7140056c444d60ac5.png" width="1440" height="900" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="上传与解析文档">上传与解析文档<a href="#上传与解析文档" class="hash-link" aria-label="上传与解析文档的直接链接" title="上传与解析文档的直接链接" translate="no">​</a></h2>
+<p>按下面五步即可把文件加入知识库：</p>
+<ol>
+<li class="">进入某个知识库详情页。</li>
+<li class="">左侧文件区点击 <strong>上传</strong>，选择文档 / 图片 / 音频 / 视频。</li>
+<li class="">上传后该文件会进入 <strong>解析中</strong>；页面会自动轮询，一般无需手动刷新。</li>
+<li class="">鼠标移到左侧某条文件上时，状态徽章与文件大小会换成 <strong>解析进度条</strong>（数值来自 RAGFlow，随轮询更新）。</li>
+<li class="">左侧状态变为 <strong>已解析</strong> 后，中间可看预览，顶部 <strong>切片</strong> 按钮可点；未解析时 <strong>切片</strong> 为禁用（不可点）。</li>
+<li class="">需要让智能体用这份资料时，回到列表页把知识库 <strong>部署</strong> 到运行中的实例。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="知识库详情页" src="/docs/assets/images/knowledge-detail-fba276b19ddef885333dba950ed608db.png" width="1024" height="511" class="img_ev3q"></p>
+<table><thead><tr><th>区域</th><th>功能</th></tr></thead><tbody><tr><td>左侧文件树</td><td>上传、搜索；单文件状态：待解析 / 解析中 / 已解析 / 解析失败 / 无切片。悬停行时状态与大小变为解析进度条（见下）</td></tr><tr><td>中间工作区</td><td>打开文件并<strong>呈现文件本身</strong>：文本显示正文，PDF/图片内嵌预览，音视频只提供播放器</td></tr><tr><td>右侧面板</td><td>知识问答、召回测试</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kb-file-progress">文件行：悬停看解析进度<a href="#kb-file-progress" class="hash-link" aria-label="文件行：悬停看解析进度的直接链接" title="文件行：悬停看解析进度的直接链接" translate="no">​</a></h3>
+<p>详情页左侧每条文件默认显示 <strong>状态</strong>（如已解析）和 <strong>文件大小</strong>。把鼠标移到该行上时，这两项会换成 <strong>进度条 + 百分比</strong>。</p>
+<table><thead><tr><th>你看到的</th><th>说明</th></tr></thead><tbody><tr><td>默认</td><td>状态徽章 + 大小（如 <code>12.7 KB</code>）</td></tr><tr><td>鼠标悬停</td><td>进度条与百分比，来自 RAGFlow 的 <code>progress</code></td></tr><tr><td>条在走</td><td>页面约每 <strong>3 秒</strong> 轮询文件列表，无需整页刷新</td></tr><tr><td>已解析后悬停</td><td>进度一般为 100%；失败时进度条为红色</td></tr></tbody></table>
+<p>进度详情（<code>progress_msg</code>，含失败原因）可在悬停进度条时通过提示看到。若条长时间不动，按 <a href="#%E5%B8%B8%E8%A7%81%E6%8E%92%E6%9F%A5" class="">常见排查</a> 检查 QYRAG 解析服务。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kb-supported-formats">支持的文件格式（RAGFlow / NineClaw）<a href="#kb-supported-formats" class="hash-link" aria-label="支持的文件格式（RAGFlow / NineClaw）的直接链接" title="支持的文件格式（RAGFlow / NineClaw）的直接链接" translate="no">​</a></h3>
+<p>知识库底层是 <strong>RAGFlow（QYRAG）</strong>。能否解析以 RAGFlow 为准；NineClaw WebUI 上传框会再限制「可选扩展名」。用户查阅本表即可：<br>
+<strong><a class="" href="/docs/manual/knowledge#kb-supported-formats">RAG — 支持的文件格式</a></strong>（本页锚点 <code>#kb-supported-formats</code>）。</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="nineclaw-webui-可上传与上传按钮一致">NineClaw WebUI 可上传（与上传按钮一致）<a href="#nineclaw-webui-可上传与上传按钮一致" class="hash-link" aria-label="NineClaw WebUI 可上传（与上传按钮一致）的直接链接" title="NineClaw WebUI 可上传（与上传按钮一致）的直接链接" translate="no">​</a></h4>
+<table><thead><tr><th>类型</th><th>扩展名</th></tr></thead><tbody><tr><td>文本</td><td><code>.txt</code> <code>.md</code> <code>.markdown</code> <code>.json</code> <code>.csv</code> <code>.log</code></td></tr><tr><td>办公文档</td><td><code>.docx</code> <code>.pdf</code></td></tr><tr><td>图片</td><td><code>.png</code> <code>.jpg</code> <code>.jpeg</code> <code>.webp</code> <code>.gif</code> <code>.bmp</code> <code>.tif</code> <code>.tiff</code></td></tr><tr><td>音频</td><td><code>.wav</code> <code>.mp3</code> <code>.m4a</code> <code>.aac</code> <code>.flac</code> <code>.ogg</code> <code>.opus</code> <code>.wma</code></td></tr><tr><td>视频</td><td><code>.mp4</code> <code>.webm</code> <code>.mov</code> <code>.mkv</code> <code>.avi</code> <code>.wmv</code> <code>.flv</code> <code>.m4v</code></td></tr></tbody></table>
+<p>系统按<strong>文件扩展名</strong>区分音视频。请勿把 <code>.mp4</code> 改名为 <code>.mp3</code> 再上传。</p>
+<blockquote>
+<p><strong>说 明：</strong> 详情页对 <code>.doc</code>（旧版 OLE）可做预览回退，但上传入口以上表为准；复杂旧版 Word 建议另存为 <code>.docx</code> 后再上传。</p>
+</blockquote>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="ragflow-官方还支持webui-未全量开放的格式">RAGFlow 官方还支持、WebUI 未全量开放的格式<a href="#ragflow-官方还支持webui-未全量开放的格式" class="hash-link" aria-label="RAGFlow 官方还支持、WebUI 未全量开放的格式的直接链接" title="RAGFlow 官方还支持、WebUI 未全量开放的格式的直接链接" translate="no">​</a></h4>
+<p>下列格式在 <strong>RAGFlow 控制台</strong>（<code>http://服务器:8513</code>）侧通常可解析（与官方 General 等切片模板兼容），但 <strong>NineClaw 知识库上传框当前不一定可选</strong>。若必须使用，可在 RAGFlow 控制台上传后，再在 NineClaw 使用该知识库（以交付约定为准）：</p>
+<table><thead><tr><th>类型</th><th>扩展名（RAGFlow 常见）</th></tr></thead><tbody><tr><td>文档</td><td><code>.doc</code> <code>.mdx</code> <code>.html</code> <code>.eml</code></td></tr><tr><td>表格</td><td><code>.xlsx</code> <code>.xls</code></td></tr><tr><td>演示文稿</td><td><code>.ppt</code> <code>.pptx</code></td></tr></tbody></table>
+<p>官方「切片模板 ↔ 兼容扩展名」与版本差异，请直接看 RAGFlow 文档：</p>
+<ul>
+<li class=""><a href="https://ragflow.io/docs/configure_knowledge_base" target="_blank" rel="noopener noreferrer" class="">Configure Dataset（切片模板与兼容格式）</a></li>
+<li class=""><a href="https://ragflow.io/docs/" target="_blank" rel="noopener noreferrer" class="">Quickstart（支持的文件类型概述）</a></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="解析成功还依赖模型配置">解析成功还依赖模型配置<a href="#解析成功还依赖模型配置" class="hash-link" aria-label="解析成功还依赖模型配置的直接链接" title="解析成功还依赖模型配置的直接链接" translate="no">​</a></h4>
+<table><thead><tr><th>内容类型</th><th>通常还需要</th></tr></thead><tbody><tr><td>文本 / PDF / Word</td><td>Embedding；复杂 PDF 可能依赖 OCR / 视觉解析</td></tr><tr><td>图片</td><td>Embedding + OCR / 视觉相关模型</td></tr><tr><td>音频 / 视频</td><td>Embedding；稳定出切片时还需按交付配置 RAGFlow 解析相关模型（如 ASR）</td></tr></tbody></table>
+<p>对接见 <a class="" href="/docs/manual/qyrag-implementation">QYRAG 配置</a>；部署见 <a class="" href="/docs/manual/qyrag-deployment">QYRAG 部署</a>。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kb-media-audio">音频怎么用？<a href="#kb-media-audio" class="hash-link" aria-label="音频怎么用？的直接链接" title="音频怎么用？的直接链接" translate="no">​</a></h3>
+<p>知识库里的音频与文本一样走 <strong>RAGFlow 上传 + 解析</strong>。详情页中间区<strong>只播放音频</strong>，不再展示「转写内容」面板，也不会在预览时调用 Models / RAGFlow ASR 做前端转写。</p>
+<table><thead><tr><th>步骤</th><th>你做什么</th><th>系统做什么</th></tr></thead><tbody><tr><td>1</td><td>上传 <code>.mp3</code> / <code>.wav</code> 等音频</td><td>文件进入 RAGFlow 知识库并触发解析</td></tr><tr><td>2</td><td>点开该文件</td><td>中间<strong>只呈现播放器</strong>（文件预览）</td></tr><tr><td>3</td><td>解析成功后点 <strong>切片</strong></td><td>查看 RAGFlow 生成的向量切片；未解析时按钮禁用</td></tr></tbody></table>
+<p>若希望音视频在问答中可检索，需保证 RAGFlow 侧解析成功并产出切片。音视频在 RAGFlow 内能否顺利解析，取决于 RAGFlow「模型设置」中的解析相关模型（按交付环境配置；与 Models 页供应商 ASR 无关）。<br>
+<!-- -->Models 页的 ASR 面板仅用于供应商连通性试听，见 <a class="" href="/docs/manual/asr-recording">ASR 语音转写</a>。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kb-media-video">视频怎么用？<a href="#kb-media-video" class="hash-link" aria-label="视频怎么用？的直接链接" title="视频怎么用？的直接链接" translate="no">​</a></h3>
+<p>视频同样只做<strong>文件呈现 + RAGFlow 解析</strong>。详情预览<strong>只保留播放器</strong>，无关键帧、无「转写内容」区。</p>
+<table><thead><tr><th>步骤</th><th>你做什么</th><th>系统做什么</th></tr></thead><tbody><tr><td>1</td><td>上传 <code>.mp4</code> / <code>.webm</code> 等视频</td><td>上传到 RAGFlow 并解析</td></tr><tr><td>2</td><td>点开该文件</td><td>中间<strong>只播放视频</strong></td></tr><tr><td>3</td><td>解析成功后点 <strong>切片</strong></td><td>查看切片；未解析时 <strong>切片</strong> 不可点</td></tr></tbody></table>
+<p>失败时检查左侧文件状态，并点 <strong>重新解析</strong>；不要在预览区等待「后台转写」。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="图片说明">图片说明<a href="#图片说明" class="hash-link" aria-label="图片说明的直接链接" title="图片说明的直接链接" translate="no">​</a></h3>
+<p>上传后由 QYRAG / RAGFlow 解析（通常依赖 OCR / 视觉模型）。若一直失败，请在 RAGFlow 侧确认已配置可用解析模型，再回到 NineClaw 查看文件状态。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="word-文档预览docx--doc">Word 文档预览（.docx / .doc）<a href="#word-文档预览docx--doc" class="hash-link" aria-label="Word 文档预览（.docx / .doc）的直接链接" title="Word 文档预览（.docx / .doc）的直接链接" translate="no">​</a></h3>
+<p>中间工作区对 Word 类文件的预览与实例工作区一致：</p>
+<table><thead><tr><th>格式</th><th>预览方式</th></tr></thead><tbody><tr><td><code>.docx</code></td><td>高保真排版预览（接近原稿版式）</td></tr><tr><td><code>.doc</code>（  旧版 OLE）</td><td>尽量转成可读正文；复杂排版可能有差异</td></tr></tbody></table>
+<p>若预览空白或报错：确认文件未损坏；<code>.doc</code> 可另存为 <code>.docx</code> 后重新上传。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="查看切片">查看切片<a href="#查看切片" class="hash-link" aria-label="查看切片的直接链接" title="查看切片的直接链接" translate="no">​</a></h2>
+<p>文档解析后会被拆成多个切片。切片是知识库检索的基础。</p>
+<ol>
+<li class="">选中已解析文件（左侧为 <strong>已解析</strong>）。</li>
+<li class="">点击顶部 <strong>切片</strong>（未解析时按钮为禁用状态）。</li>
+<li class="">查看每个切片的内容。</li>
+<li class="">按需启用或停用某些切片。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="切片管理" src="/docs/assets/images/knowledge-detail-chunks-490331490352375f9e62c7ec55161780.png" width="1440" height="900" class="img_ev3q"></p>
+<p>如果某些内容不应该参与问答，可以停用对应切片。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="切片里的图片视觉解析">切片里的图片（视觉解析）<a href="#切片里的图片视觉解析" class="hash-link" aria-label="切片里的图片（视觉解析）的直接链接" title="切片里的图片（视觉解析）的直接链接" translate="no">​</a></h3>
+<p>部分文档经视觉 / OCR 解析后，切片会带示意图：</p>
+<table><thead><tr><th>界面表现</th><th>说明</th></tr></thead><tbody><tr><td>左图右文</td><td>左侧为切片配图，右侧为文字内容</td></tr><tr><td>点击图片</td><td>打开放大预览（可关闭后继续浏览其它切片）</td></tr></tbody></table>
+<p>图片由平台从 RAGFlow 代理加载。若图裂、空白：检查 QYRAG 是否可达、该切片是否含 <code>image_id</code>，并刷新页面重试。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="知识问答">知识问答<a href="#  知识问答" class="hash-link" aria-label="知识问答的直接链接" title="知识问答的直接链接" translate="no">​</a></h2>
+<ol>
+<li class="">在右侧面板选择 <strong>知识问答</strong>。</li>
+<li class="">选择问答使用的模型。</li>
+<li class="">（可选）打开问答设置，配置 <strong>跨语言检索</strong>（见下）。</li>
+<li class="">输入问题并发送。</li>
+<li class="">查看回答和引用来源。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="知识问答" src="/docs/assets/images/knowledge-detail-qa-47dad2bbc027a6f1ff92c62430ed2c4b.png" width="1024" height="511" class="img_ev3q"></p>
+<p>知识问答走 <strong>AgenticRAG</strong>（可多轮检索与证据判断，再生成带引用的回答）。回答质量同时受文档质量、切片效果和模型能力影响。与全局检索共用同一套 Agent，仅检索范围不同。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kb-cross-languages">跨语言检索（问答 / 召回）<a href="#kb-cross-languages" class="hash-link" aria-label="跨语言检索（问答 / 召回）的直接链接" title="跨语言检索（问答 / 召回）的直接链接" translate="no">​</a></h3>
+<p>详情页右侧 <strong>知识问答</strong> 与 <strong>召回测试</strong> 的设置中，可多选 <strong>目标语言</strong>（默认勾选 <strong>中文 + 英文</strong>）。该参数会传给 RAGFlow，用于跨语言检索场景（例如问题是中文、资料含英文）。</p>
+<table><thead><tr><th>操作建议</th><th>说明</th></tr></thead><tbody><tr><td>默认即可</td><td>多数中文知识库保持「中文 + 英文」即可</td></tr><tr><td>资料语种单一</td><td>可只勾选对应语言，减少无关召回</td></tr><tr><td>仍找不到内容</td><td>先确认文档已解析、切片已启用，再调整语言与问法</td></tr></tbody></table>
+<p>可选语言一般包括：中文、英文，以及西 / 法 / 德 / 日 / 韩 / 越 / 阿 / 土等（以页面选项为准）。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="输入框历史--">输入框历史（↑ / ↓）<a href="#输入框历史--" class="hash-link" aria-label="输入框历史（↑ / ↓）的直接链接" title="输入框历史（↑ / ↓）的直接链接" translate="no">​</a></h3>
+<p>在知识问答、召回测试等输入框中：</p>
+<table><thead><tr><th>按键</th><th>作用</th></tr></thead><tbody><tr><td><strong>↑</strong></td><td>调出上一条本页发送过的内容</td></tr><tr><td><strong>↓</strong></td><td>在历史记录中向后翻；或回到正在编辑的草稿</td></tr></tbody></table>
+<p>历史按页面上下文分开保存（详情页问答 ≠ 全局检索 ≠ 其它模块），互不串扰。开始手动改字后，会退出“浏览历史”模式。</p>
+<p>设计说明（面向研发/交付）见产品指南：<a class="" href="/docs/guide/core-features/knowledge-qa">知识问答 / AgenticRAG</a>。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="召回测试">召回测试<a href="#召回测试" class="hash-link" aria-label="召回测试的直接链接" title="召回测试的直接链接" translate="no">​</a></h2>
+<p>召回测试用于检查“系统能不能找对资料”，它更偏调试知识库效果。</p>
+<ol>
+<li class="">切换到 <strong>召回测试</strong>。</li>
+<li class="">（可选）在设置中配置 <a href="#kb-cross-languages" class="">跨语言检索</a>。</li>
+<li class="">输入查询语句。</li>
+<li class="">查看命中的切片和相似度。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="召回测试" src="/docs/assets/images/knowledge-detail-recall-7d565ad0ace2d25ac81983f5363c6871.png" width="1024" height="511" class="img_ev3q"></p>
+<p>如果召回结果不理想，可以检查文档是否解析完成、切片是否启用、问题表达是否和文档内容匹配，以及跨语言选项是否合适。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="全局检索nineclaw-rag">全局检索（NineClaw RAG）<a href="#全局检索nineclaw-rag" class="hash-link" aria-label="全局检索（NineClaw RAG）的直接链接" title="全局检索（NineClaw RAG）的直接链接" translate="no">​</a></h2>
+<p><strong>全局检索</strong> = 在 RAG 列表页点击 <strong>检索</strong> 后进入的独立页面（标题为 <strong>NineClaw RAG</strong>）。它会按你选的模型，在<strong>多个知识库</strong>里检索资料并生成回答。</p>
+<p>适合：部署前验证「多库一起问」是否可用。<br>
+<!-- -->不适合：只想调试某一个知识库时——那种请进该库详情页，用右侧 <strong>知识问答</strong>。</p>
+<table><thead><tr><th>对比项</th><th>全局检索（本页）</th><th>详情页「知识问答」</th></tr></thead><tbody><tr><td>入口</td><td>RAG 列表 → <strong>检索</strong></td><td>进入某个知识库详情 → 右侧 <strong>知识问答</strong></td></tr><tr><td>覆盖范围</td><td>默认全部知识库，可在 <strong>检索设置</strong> 里勾选</td><td>仅当前这一个知识库</td></tr><tr><td>回答引擎</td><td>同一套 AgenticRAG Agent</td><td>同一套 AgenticRAG Agent</td></tr><tr><td>典型用途</td><td>跨库问答、部署前联调</td><td>单库效果调试</td></tr></tbody></table>
+<p>访问地址示例：<code>http://xxx:8510/knowledge/search</code></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-进入页面">1. 进入页面<a href="#1-进入页面" class="hash-link" aria-label="1. 进入页面的直接链接" title="1. 进入页面的直接链接" translate="no">​</a></h3>
+<ol>
+<li class="">打开 NineClaw WebUI，进入左侧导航 <strong>RAG</strong>。</li>
+<li class="">确认至少有一个知识库，且文档已解析完成。</li>
+<li class="">点击列表页工具栏 <strong>检索</strong>。</li>
+<li class="">进入 <strong>NineClaw RAG</strong> 页面。</li>
+</ol>
+<p>页面主要分区：</p>
+<table><thead><tr><th>位置</th><th>界面元素</th><th>作用</th></tr></thead><tbody><tr><td>左上角</td><td><strong>返回</strong></td><td>有结果时先清空回到空白页；空白页再点则回 RAG 列表</td></tr><tr><td>页面中央</td><td>标题 + 问题输入框 + <strong>检索</strong></td><td>输入问题并开始 / 停止生成</td></tr><tr><td>右上角</td><td>齿轮图标</td><td>打开右侧 <strong>检索设置</strong> 侧栏（见下一节）</td></tr></tbody></table>
+<p><img decoding="async" loading="lazy" alt="全局检索页（含检索设置侧栏）" src="/docs/assets/images/knowledge-search-panel-242bb24b1f560ad6f9bdac66afcde2bd.png" width="1024" height="502" class="img_ev3q"></p>
+<p>上图右侧即为 <strong>检索设置</strong>：首次使用建议先打开它，选好模型和知识库，再提问。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-检索设置必看">2. 检索设置（必看）<a href="#2-检索设置必看" class="hash-link" aria-label="2. 检索设置（必看）的直接链接" title="2. 检索设置（必看）的直接链接" translate="no">​</a></h3>
+<p>点击页面<strong>右上角齿轮</strong>，右侧滑出 <strong>检索设置</strong> 侧栏（关闭可点侧栏右上角 <strong>×</strong>）。侧栏里有两类配置：</p>
+<table><thead><tr><th>配置项</th><th>说明</th></tr></thead><tbody><tr><td><strong>问答模型</strong></td><td>下拉选择用于生成回答的模型（如图中的 <code>modelstack / GLM-4-Flash</code>）。若报错与工具调用相关，请换一个支持对话的模型。</td></tr><tr><td><strong>知识库范围（默认全部）</strong></td><td>用开关勾选本次要参与检索的知识库。默认全部开启；关掉某个库后，该库不会参与本次问答。</td></tr></tbody></table>
+<p>操作建议：</p>
+<ol>
+<li class="">点右上角齿轮，打开 <strong>检索设置</strong>。</li>
+<li class="">确认 <strong>问答模型</strong> 已选中可用模型。</li>
+<li class="">在 <strong>知识库范围</strong> 中保留需要的库（至少开启一个）。</li>
+<li class="">点 <strong>×</strong> 关闭侧栏（设置会保留），回到中间输入框提问。</li>
+</ol>
+<p>未打开过检索设置时，一般会使用默认模型与「全部知识库」；若问答失败或答非所问，优先回到这里检查模型和勾选范围。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-提问并查看回答">3. 提问并查看回答<a href="#3-提问并查看回答" class="hash-link" aria-label="3. 提问并查看回答的直接链接" title="3. 提问并查看回答的直接链接" translate="no">​</a></h3>
+<ol>
+<li class="">在中间输入框填写问题（例如「中美贸易战为什么会打起来？」）。</li>
+<li class="">点击输入框右侧的 <strong>检索</strong>。生成过程中按钮会变成 <strong>停止</strong>，可随时中断。</li>
+<li class="">系统使用与详情页相同的 <strong>AgenticRAG Agent</strong>（可能多轮检索）。页面布局与时序如下：<!-- -->
+<ul>
+<li class="">状态行会显示「正在检索并生成回答」以及 <strong>覆盖知识库</strong>（≤5 个全部列出；多于 5 个时显示前 3 个 + <code>…</code> + 最后一个）。</li>
+<li class=""><strong>上方</strong>先流式展示回答正文。</li>
+<li class=""><strong>回答全部流式完成</strong>（状态变为「回答完成」）之后，<strong>下方</strong>再逐条浮现 <strong>资料来源</strong>（不是一次性全部跳出）。</li>
+</ul>
+</li>
+<li class="">中途点 <strong>停止</strong> 时，只保留已生成的部分回答，<strong>不展示</strong>资料来源。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="全局检索结果示例" src="/docs/assets/images/knowledge-search-results-5fd07b735d3d7db889e96a41db85e8ad.png" width="885" height="809" class="img_ev3q"></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-查看引用与资料来源角标联动">4. 查看引用与资料来源（角标联动）<a href="#4-查看引用与资料来源角标联动" class="hash-link" aria-label="4. 查看引用与资料来源（角标联动）的直接链接" title="4. 查看引用与资料来源（角标联动）的直接链接" translate="no">​</a></h3>
+<p>回答正文中的引用角标与下方 <strong>资料来源</strong> 列表编号<strong>一一对应</strong>。系统识别：</p>
+<table><thead><tr><th>写法</th><th>说明</th></tr></thead><tbody><tr><td><code>[1]</code>、<code>[2]</code></td><td>常见半角方括号（推荐）</td></tr><tr><td><code>［1］</code></td><td>全角方括号</td></tr><tr><td><code>【1】</code></td><td>中文方头括号（模型偶发写法，同样可点）</td></tr></tbody></table>
+<p>越界幻觉角标（编号大于资料来源数量，且 ≤50）会被自动去掉，不会变成可点按钮。</p>
+<ol>
+<li class="">点击正文角标，或点击某条资料来源摘录：滚动定位到对应来源（<strong>不铺彩色背景</strong>）。</li>
+<li class="">在来源卡片上点击 <strong>打开原文切片</strong>：进入对应知识库详情，并尽量定位到相关文件 / 切片（<strong>此时切片会高亮背景色</strong>）。</li>
+<li class="">在详情页左上角点返回：<!-- -->
+<ul>
+<li class=""><strong>未刷新</strong>页面 → 回到刚才的全局检索回答页；</li>
+<li class=""><strong>已刷新</strong>页面 → 回到空白的 NineClaw RAG 页。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>须等回答正文流式<strong>全部结束</strong>后，资料来源才会开始逐条出现。中途点 <strong>停止</strong> 时仍不展示资料来源。</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-返回与刷新">5. 返回与刷新<a href="#5-返回与刷新" class="hash-link" aria-label="5. 返回与刷新的直接链接" title="5. 返回与刷新的直接链接" translate="no">​</a></h3>
+<table><thead><tr><th>你的操作</th><th>页面结果</th></tr></thead><tbody><tr><td>有回答时，在检索页点左上角 <strong>返回</strong></td><td>清空本次结果，回到居中空白检索页</td></tr><tr><td>已在空白页再点 <strong>返回</strong></td><td>回到 RAG 列表</td></tr><tr><td>刷新浏览器</td><td>回到空白检索页（不保留上次回答）</td></tr><tr><td>从引用进详情再返回（未刷新）</td><td>恢复刚才的问题、回答与资料来源</td></tr></tbody></table>
+<blockquote>
+<p>Web Search 列表页也有跨信源的全局检索，见 <a class="" href="/docs/manual/websearch#%E5%85%A8%E5%B1%80%E6%A3%80%E7%B4%A2%E8%81%9A%E5%90%88%E6%A3%80%E7%B4%A2">Web Search（信源管理）</a>。MCP <strong>没有</strong>全局检索。</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="部署到-nineclaw-实例">部署到 NineClaw 实例<a href="#部署到-nineclaw-实例" class="hash-link" aria-label="部署到 NineClaw 实例的直接链接" title="部署到 NineClaw 实例的直接链接" translate="no">​</a></h2>
+<p>部署前请确认目标实例处于 <strong>运行中</strong>。</p>
+<ol>
+<li class="">在 RAG 列表页点击 <strong>部署</strong>。</li>
+<li class="">选择要部署的知识库（例如「策略分析」）。</li>
+<li class="">选择一个或多个 <strong>运行中</strong> 的 NineClaw 实例。</li>
+<li class="">点击 <strong>开始</strong>。</li>
+<li class="">等待部署完成（状态变为「已部署」）。</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="部署步骤 1 — 选知识库" src="/docs/assets/images/knowledge-deploy-step1-482ed06a827fdd1c9c1f49bc0abf9ef5.png" width="1440" height="900" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="部署步骤 2 — 选实例" src="/docs/assets/images/knowledge-deploy-step2-3f423e18a9c4acf1e11027df639cf059.png" width="1440" height="900" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="部署步骤 3 — 执行" src="/docs/assets/images/knowledge-deploy-step3-cb9c22dadf3c0bf0a5acf6049dbea81d.png" width="1440" height="900" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="部署完成" src="/docs/assets/images/knowledge-deploy-done-1ba8197e2b6f1f0caaa5395b75b6b460.png" width="1440" height="900" class="img_ev3q"></p>
+<p>部署完成后，目标实例中的智能体才能在任务中使用这些知识库。</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="部署写入了什么">部署写入了什么？<a href="#部署写入了什么" class="hash-link" aria-label="部署写入了什么？的直接链接" title="部署写入了什么？的直接链接" translate="no">​</a></h3>
+<p>Manager 会把 QYRAG 相关配置写入实例的 <code>/opt/data/.env</code>（Hermes 环境变量），其中包括：</p>
+<table><thead><tr><th>变量</th><th>含义</th></tr></thead><tbody><tr><td><code>QYRAG_BASE_URL</code></td><td>QYRAG / RAGFlow 服务地址</td></tr><tr><td><code>QYRAG_API_KEY</code></td><td>访问 QYRAG 的 API Key</td></tr><tr><td><code>QYRAG_DATASETS</code></td><td><strong>知识库名称 → dataset id</strong> 的 JSON 映射</td></tr></tbody></table>
+<p><code>QYRAG_DATASETS</code> 的键是知识库<strong>显示名称</strong>，值是对应的 dataset id。目标效果示例：</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">QYRAG_DATASETS=&quot;{\&quot;策略分析\&quot;: \&quot;afe3d03a863811f181aba75879343158\&quot;}&quot;</span><br></div></code></pre></div></div>
+<blockquote>
+<p><strong>为何有时仍看到 <code>\u7b56\u7565\u5206\u6790</code>？</strong> Hermes 的 <code>PUT /api/env</code> 写入 <code>.env</code> 时会丢掉中文（变成空键 <code>&quot;&quot;</code>）。Manager 在部署时会再通过容器内 UTF-8 回写该行，因此需部署<strong>含此回写逻辑</strong>的 Manager，并对实例<strong>重新部署</strong>知识库 后，<code>cat .env</code> 才会显示可读中文。</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="如何确认部署成功">如何确认部署成功<a href="#如何确认部署成功" class="hash-link" aria-label="如何确认部署成功的直接链接" title="如何确认部署成功的直接链接" translate="no">​</a></h3>
+<ol>
+<li class="">打开目标 NineClaw 实例详情页，点击右上角 <strong>容器终端</strong>。</li>
+<li class="">执行：</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token builtin class-name">cd</span><span class="token plain"> /opt/data</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">cat</span><span class="token plain"> .env</span><br></div></code></pre></div></div>
+<ol start="3">
+<li class="">确认存在 <code>QYRAG_DATASETS</code>，且键为知识库中文名。正常示例：</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">QYRAG_DATASETS=&quot;{\&quot;策略分析\&quot;: \&quot;e1aaa1d285a911f1a842176ee66dcb4b\&quot;}&quot;</span><br></div></code></pre></div></div>
+<p><img decoding="async" loading="lazy" alt="实例终端查看 QYRAG_DATASETS" src="/docs/assets/images/knowledge-qyrag-datasets-env-4125bf7dd4b36979ee08d82b49535444.png" width="1440" height="900" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="QYRAG_DATASETS 说明示例" src="/docs/assets/images/knowledge-qyrag-datasets-env-example-66c906a3e815624b7643ac7caad273be.png" width="1000" height="520" class="img_ev3q"></p>
+<blockquote>
+<p>若仍看到 <code>QYRAG_DATASETS=&quot;{\&quot;\&quot;: \&quot;...\&quot;}&quot;</code>（空键），说明写入了旧结果：请确认 Manager / WebUI 已更新，并对该实例<strong>重新部署</strong>一次。
+若看到 <code>\u7b56\u7565\u5206\u6790</code> 这类转义，也是旧写入格式；重新部署后应变为直接中文。</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="常见排查">常见排查<a href="#常见排查" class="hash-link" aria-label="常见排查的直接链接" title="常见排查的直接链接" translate="no">​</a></h2>
+<table><thead><tr><th>现象</th><th>优先检查</th></tr></thead><tbody><tr><td>RAG 页面加载失败</td><td>QYRAG 服务地址和 API Key 是否正确</td></tr><tr><td>卡片一直是 <strong>构建中</strong></td><td>进详情看哪个文件仍在解析；QYRAG 解析服务是否正常；稍等自动刷新即可</td></tr><tr><td>卡片是 <strong>部分异常</strong> / <strong>构建失败</strong></td><td>进详情查看失败文件 → 修好后 <strong>重新解析</strong>；全部成功后卡片应变为 <strong>已就绪</strong></td></tr><tr><td>单文件一直「解析中」</td><td>QYRAG 文档解析是否正常；详情页会自动变为「已解析」，无需整页刷新</td></tr><tr><td>悬停看不到进度条 / 百分比一直是「—」</td><td>是否把鼠标放在<strong>文件行</strong>上（不是只点名称）；Manager 是否返回 <code>progress</code>；稍等轮询或刷新 WebUI</td></tr><tr><td>进度条长时间不涨</td><td>RAGFlow 解析是否卡住；可点该行右侧 <strong>重新解析</strong>；并核对 8513 侧解析日志</td></tr><tr><td>详情页状态与 8513 不一致</td><td>稍等自动轮询；仍不对时刷新 WebUI，并确认 Manager 已更新</td></tr><tr><td><strong>切片</strong> 按钮点不了</td><td>当前文件是否已解析成功；未解析时按钮故意禁用</td></tr><tr><td>音视频只能播、没有正文区</td><td>属预期：预览只呈现文件（播放器），解析结果请到 <strong>切片</strong> 查看</td></tr><tr><td>音视频解析失败 / 无切片</td><td>RAGFlow 解析模型是否按交付要求配置；左侧点 <strong>重新解析</strong></td></tr><tr><td>图片无法选择 / 上传</td><td>刷新 WebUI；确认扩展名在 <a href="#kb-supported-formats" class="">支持的文件格式</a> 内（png/jpg/webp 等）</td></tr><tr><td>上传框选不到 xlsx / ppt</td><td>WebUI 未全量开放；可查 <a href="#kb-supported-formats" class="">支持的文件格式</a> 第二节，或到 RAGFlow 控制台上传</td></tr><tr><td>图片上传后解析失败</td><td>QYRAG 是否已配置 OCR/视觉解析模型</td></tr><tr><td>问答没有引用</td><td>文档是否解析完成，切片是否启用；卡片是否至少接近 <strong>已就绪</strong></td></tr><tr><td>召回结果不相关</td><td>文档内容、问题表述、切片状态是否匹配；可调整 <a href="#kb-cross-languages" class="">跨语言检索</a></td></tr><tr><td>切片有图裂 / 点不开放大</td><td>QYRAG 是否可达；刷新后重试；确认切片含视觉图</td></tr><tr><td>Word 预览空白</td><td>文件是否损坏；<code>.doc</code> 可另存为 <code>.docx</code> 再上传</td></tr><tr><td>全局检索按钮不可用</td><td>是否至少有一个知识库</td></tr><tr><td>全局检索失败 / 无回答</td><td>问答模型是否已选、知识库是否勾选、文档是否已解析</td></tr><tr><td>全局检索无资料来源</td><td>是否中途点了停止；回答是否已流式完成（未完成前不展示）；是否已召回到切片</td></tr><tr><td>资料来源比回答先出现</td><td>请更新 WebUI：当前版本须等正文流式结束后再逐条展示来源</td></tr><tr><td>角标点不了 / 像普通文字</td><td>是否为 <code>【n】</code> 等写法（已支持）；编号是否超出资料来源数量（幻觉角标会被去掉）；刷新 WebUI</td></tr><tr><td>角标与资料来源对不上 / 点了没高亮</td><td>角标编号应与资料来源 <code>[n]</code> 一致；刷新 WebUI / 重启 Manager</td></tr><tr><td>点「打开原文切片」后切片不高亮</td><td>文档是否已解析出真实向量切片；可稍后在详情页「切片」中再点角标重试</td></tr><tr><td>NineClaw 有多个库，8513 <code>/datasets</code> 只有少量</td><td><strong>账号不一致：</strong> NineClaw 列出的是「外部知识库」API Key <strong>所属用户</strong>的库；浏览器登录 8513 若是另一账号，只能看到该账号下的库。用生成 Key 的同一账号登录 8513 核对</td></tr><tr><td>点引用进详情后返回不对</td><td>是否刷新过页面；刷新后会话会清空</td></tr><tr><td>实例中无法使用知识库</td><td>是否已部署到目标实例</td></tr><tr><td><code>.env</code> 中 <code>QYRAG_DATASETS</code> 键为空 <code>&quot;&quot;</code></td><td>是否为旧版本写入；更新后重新部署；正常应为中文名称</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="相关文档">相关文档<a href="#相关文档" class="hash-link" aria-label="相关文档的直接链接" title="相关文档的直接链接" translate="no">​</a></h2>
+<table><thead><tr><th>文档</th><th>说明</th></tr></thead><tbody><tr><td><a href="#kb-supported-formats" class="">支持的文件格式</a></td><td>NineClaw / RAGFlow 可上传与可解析扩展名（本页）</td></tr><tr><td><a class="" href="/docs/manual/qyrag-deployment">QYRAG 部署</a></td><td>安装 QYRAG / RAGFlow（8513）</td></tr><tr><td><a class="" href="/docs/manual/qyrag-implementation">QYRAG 配置</a></td><td>对接 NineClaw；含默认 ASR / Embedding 等模型</td></tr><tr><td><a class="" href="/docs/manual/asr-recording">ASR 语音转写</a></td><td>Models 页供应商 ASR 试听（与知识库详情预览无关）</td></tr><tr><td><a class="" href="/docs/manual/intro">概览</a></td><td>手册导航与「配置 / 部署」概念</td></tr></tbody></table></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/QY-NineClaw/NineClaw-Docs/tree/main/manual/knowledge.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/manual/skills"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">Skill（技能库）</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/manual/mcps"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">MCP（MCP 工具）</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#进入页面" class="table-of-contents__link toc-highlight">进入页面</a></li><li><a href="#页面上能看到什么" class="table-of-contents__link toc-highlight">页面上能看到什么</a><ul><li><a href="#kb-card-status" class="table-of-contents__link toc-highlight">卡片右上角：五种构建状态</a></li></ul></li><li><a href="#首次使用前检查-qyrag" class="table-of-contents__link toc-highlight">首次使用前检查 QYRAG</a></li><li><a href="#创建知识库" class="table-of-contents__link toc-highlight">创建知识库</a></li><li><a href="#上传与解析文档" class="table-of-contents__link toc-highlight">上传与解析文档</a><ul><li><a href="#kb-file-progress" class="table-of-contents__link toc-highlight">文件行：悬停看解析进度</a></li><li><a href="#kb-supported-formats" class="table-of-contents__link toc-highlight">支持的文件格式（RAGFlow / NineClaw）</a></li><li><a href="#kb-media-audio" class="table-of-contents__link toc-highlight">音频怎么用？</a></li><li><a href="#kb-media-video" class="table-of-contents__link toc-highlight">视频怎么用？</a></li><li><a href="#图片说明" class="table-of-contents__link toc-highlight">图片说明</a></li><li><a href="#word-文档预览docx--doc" class="table-of-contents__link toc-highlight">Word 文档预览（.docx / .doc）</a></li></ul></li><li><a href="#查看切片" class="table-of-contents__link toc-highlight">查看切片</a><ul><li><a href="#切片里的图片视觉解析" class="table-of-contents__link toc-highlight">切片里的图片（视觉解析）</a></li></ul></li><li><a href="#知识问答" class="table-of-contents__link toc-highlight">知识问答</a><ul><li><a href="#kb-cross-languages" class="table-of-contents__link toc-highlight">跨语言检索（问答 / 召回）</a></li><li><a href="#输入框历史--" class="table-of-contents__link toc-highlight">输入框历史（↑ / ↓）</a></li></ul></li><li><a href="#召回测试" class="table-of-contents__link toc-highlight">召回测试</a></li><li><a href="#全局检索nineclaw-rag" class="table-of-contents__link toc-highlight">全局检索（NineClaw RAG）</a><ul><li><a href="#1-进入页面" class="table-of-contents__link toc-highlight">1. 进入页面</a></li><li><a href="#2-检索设置必看" class="table-of-contents__link toc-highlight">2. 检索设置（必看）</a></li><li><a href="#3-提问并查看回答" class="table-of-contents__link toc-highlight">3. 提问并查看回答</a></li><li><a href="#4-查看引用与资料来源角标联动" class="table-of-contents__link toc-highlight">4. 查看引用与资料来源（角标联动）</a></li><li><a href="#5-返回与刷新" class="table-of-contents__link toc-highlight">5. 返回与刷新</a></li></ul></li><li><a href="#部署到-nineclaw-实例" class="table-of-contents__link toc-highlight">部署到 NineClaw 实例</a><ul><li><a href="#部署写入了什么" class="table-of-contents__link toc-highlight">部署写入了什么？</a></li><li><a href="#如何确认部署成功" class="table-of-contents__link toc-highlight">如何确认部署成功</a></li></ul></li><li><a href="#常见排查" class="table-of-contents__link toc-highlight">常见排查</a></li><li><a href="#相关文档" class="table-of-contents__link toc-highlight">相关文档</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">文档</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/guide/intro">总览</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guide/architecture/routing">Traefik 路由</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">API</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api/intro">概览</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api/hermes-gateway">Hermes Gateway</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api/hermes-dashboard">Hermes Dashboard</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api/hermes-webui">Hermes WebUI</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">用户手册</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/manual/intro">概览</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/system-deployment">系统部署</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/knowledge">知识库</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/skills">Skills</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/manual/models">Models管理</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">更多</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/QY-NineClaw/NineClaw-Docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 NineClaw. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

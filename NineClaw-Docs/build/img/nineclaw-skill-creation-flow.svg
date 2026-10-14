@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw 技能创建流程</title>
+  <desc id="desc">展示用户需求如何经过专业智能体生成 Skill 文件，再由 Manager 校验保存并部署到 Runtime。</desc>
+  <defs>
+    <marker id="arrow-skill-create" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-skill-runtime" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d8e0eb;stroke-width:1.5}
+      .blue{fill:#eff6ff;stroke:#bfdbfe}
+      .green{fill:#ecfdf5;stroke:#bbf7d0}
+      .teal{fill:#f0fdfa;stroke:#99f6e4}
+      .amber{fill:#fffbeb;stroke:#fde68a}
+      .rose{fill:#fff1f2;stroke:#fecdd3}
+      .node{stroke-width:1.6}
+      .text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}
+      .title{font-size:24px;font-weight:700}
+      .subtitle{font-size:14px;fill:#475569}
+      .head{font-size:15px;font-weight:700}
+      .label{font-size:14px;font-weight:700}
+      .small{font-size:12.5px;fill:#475569}
+      .tiny{font-size:11.5px;fill:#64748b}
+      .line{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow-skill-create)}
+      .runtimeLine{stroke:#0f766e;stroke-width:2.5;fill:none;marker-end:url(#arrow-skill-runtime)}
+      .dash{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow-skill-create)}
+    </style>
+  </defs>
+
+  <rect class="bg" width="980" height="620" rx="22"/>
+  <text class="text title" x="34" y="42">技能创建：从需求到可部署能力包</text>
+  <text class="text subtitle" x="34" y="66">专业智能体负责把需求工程化为 Skill 文件；Manager 负责校验、保存和分发；Runtime 负责加载和使用。</text>
+
+  <rect class="panel" x="34" y="104" width="172" height="374" rx="14"/>
+  <text class="text head" x="120" y="132" text-anchor="middle">用户 / WebUI</text>
+  <rect class="node blue" x="58" y="172" width="124" height="70" rx="10"/>
+  <text class="text label" x="120" y="199" text-anchor="middle">描述需求</text>
+  <text class="text small" x="120" y="220" text-anchor="middle">目标 / 场景</text>
+  <text class="text small" x="120" y="236" text-anchor="middle">期望产出</text>
+  <rect class="node blue" x="58" y="316" width="124" height="70" rx="10"/>
+  <text class="text label" x="120" y="343" text-anchor="middle">审阅结果</text>
+  <text class="text small" x="120" y="364" text-anchor="middle">确认 / 继续修改</text>
+
+  <rect class="panel" x="244" y="104" width="214" height="374" rx="14"/>
+  <text class="text head" x="351" y="132" text-anchor="middle">专业 Skill 智能体</text>
+  <rect class="node green" x="270" y="158" width="162" height="74" rx="10"/>
+  <text class="text label" x="351" y="185" text-anchor="middle">能力建模</text>
+  <text class="text small" x="351" y="206" text-anchor="middle">适用范围 / 边界</text>
+  <text class="text small" x="351" y="222" text-anchor="middle">输入输出 / 验收</text>
+  <rect class="node green" x="270" y="272" width="162" height="86" rx="10"/>
+  <text class="text label" x="351" y="299" text-anchor="middle">生成文件</text>
+  <text class="text small" x="351" y="320" text-anchor="middle">SKILL.md</text>
+  <text class="text small" x="351" y="336" text-anchor="middle">references / scripts</text>
+  <text class="text small" x="351" y="352" text-anchor="middle">assets / README</text>
+
+  <rect class="panel" x="496" y="104" width="204" height="374" rx="14"/>
+  <text class="text head" x="598" y="132" text-anchor="middle">Manager</text>
+  <rect class="node amber" x="522" y="158" width="152" height="74" rx="10"/>
+  <text class="text label" x="598" y="185" text-anchor="middle">校验结构</text>
+  <text class="text small" x="598" y="206" text-anchor="middle">frontmatter / slug</text>
+  <text class="text small" x="598" y="222" text-anchor="middle">路径安全 / 文件</text>
+  <rect class="node amber" x="522" y="274" width="152" height="74" rx="10"/>
+  <text class="text label" x="598" y="301" text-anchor="middle">保存资产</text>
+  <text class="text small" x="598" y="322" text-anchor="middle">SKILLS_STORAGE_PATH</text>
+  <text class="text small" x="598" y="338" text-anchor="middle">列表 / 详情 / 下载</text>
+  <rect class="node amber" x="522" y="388" width="152" height="58" rx="10"/>
+  <text class="text label" x="598" y="414" text-anchor="middle">部署分发</text>
+  <text class="text small" x="598" y="434" text-anchor="middle">复制到 Runtime</text>
+
+  <rect class="panel" x="738" y="104" width="208" height="374" rx="14"/>
+  <text class="text head" x="842" y="132" text-anchor="middle">Runtime</text>
+  <rect class="node teal" x="764" y="198" width="156" height="82" rx="10"/>
+  <text class="text label" x="842" y="225" text-anchor="middle">加载 Skill</text>
+  <text class="text small" x="842" y="246" text-anchor="middle">skills.external_dirs</text>
+  <text class="text small" x="842" y="262" text-anchor="middle">/opt/nineclaw/external_skill</text>
+  <rect class="node teal" x="764" y="336" width="156" height="76" rx="10"/>
+  <text class="text label" x="842" y="363" text-anchor="middle">任务中使用</text>
+  <text class="text small" x="842" y="384" text-anchor="middle">Agent 按说明执行</text>
+  <text class="text small" x="842" y="400" text-anchor="middle">调用资料和脚本</text>
+
+  <path class="line" d="M182 207 H270"/>
+  <path class="line" d="M432 315 H522"/>
+  <path class="line" d="M598 232 V274"/>
+  <path class="line" d="M598 348 V388"/>
+  <path class="runtimeLine" d="M674 417 C710 386 732 342 764 260"/>
+  <path class="runtimeLine" d="M842 280 V336"/>
+  <path class="dash" d="M270 342 C220 392 192 390 182 351"/>
+
+  <rect class="panel" x="34" y="512" width="912" height="70" rx="12"/>
+  <text class="text small" x="58" y="538">关键分工：专业智能体负责把用户需求写成可维护的 Skill 目录；Manager 负责校验、保存和部署；Runtime 只按标准目录发现并加载。</text>
+  <text class="text small" x="58" y="560">核心产物：不是单段 Prompt，而是包含 SKILL.md、参考资料、脚本和验收标准的可复用能力包。</text>
+</svg>

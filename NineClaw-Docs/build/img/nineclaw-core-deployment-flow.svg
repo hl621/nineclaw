@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="680" viewBox="0 0 980 680" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw 部署功能集中流程</title>
+  <desc id="desc">展示 Models、Skill、MCP、RAG、WebSearch 五类能力如何通过 Manager 部署到 Runtime，以及 RAG 和 WebSearch 如何通过插件反向调用外部服务。</desc>
+  <defs>
+    <marker id="arrow-core-deploy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-core-plugin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d8e0eb;stroke-width:1.5}
+      .softBlue{fill:#eff6ff;stroke:#bfdbfe}
+      .softGreen{fill:#ecfdf5;stroke:#bbf7d0}
+      .softTeal{fill:#f0fdfa;stroke:#99f6e4}
+      .softAmber{fill:#fffbeb;stroke:#fde68a}
+      .softRose{fill:#fff1f2;stroke:#fecdd3}
+      .node{stroke-width:1.6}
+      .text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}
+      .title{font-size:24px;font-weight:700}
+      .subtitle{font-size:14px;fill:#475569}
+      .head{font-size:15px;font-weight:700}
+      .label{font-size:14px;font-weight:700}
+      .small{font-size:12.5px;fill:#475569}
+      .tiny{font-size:11.5px;fill:#64748b}
+      .line{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow-core-deploy)}
+      .pluginLine{stroke:#0f766e;stroke-width:2.5;fill:none;marker-end:url(#arrow-core-plugin)}
+      .dash{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow-core-deploy)}
+    </style>
+  </defs>
+
+  <rect class="bg" width="980" height="680" rx="22"/>
+  <text class="text title" x="34" y="42">部署功能：五类能力集中编排</text>
+  <text class="text subtitle" x="34" y="66">Models、Skill、MCP 是直接下发到 Runtime；RAG、WebSearch 是部署插件配置后，由 Runtime 在任务中反向调用服务。</text>
+
+  <rect class="panel" x="34" y="96" width="188" height="472" rx="14"/>
+  <text class="text head" x="128" y="124" text-anchor="middle">WebUI</text>
+  <rect class="node softBlue" x="58" y="154" width="140" height="72" rx="10"/>
+  <text class="text label" x="128" y="181" text-anchor="middle">选择能力</text>
+  <text class="text small" x="128" y="202" text-anchor="middle">Models / Skill / MCP</text>
+  <text class="text small" x="128" y="218" text-anchor="middle">RAG / WebSearch</text>
+  <rect class="node softBlue" x="58" y="272" width="140" height="64" rx="10"/>
+  <text class="text label" x="128" y="299" text-anchor="middle">选择 Runtime</text>
+  <text class="text small" x="128" y="320" text-anchor="middle">一个或多个实例</text>
+  <rect class="node softBlue" x="58" y="438" width="140" height="64" rx="10"/>
+  <text class="text label" x="128" y="465" text-anchor="middle">查看结果</text>
+  <text class="text small" x="128" y="486" text-anchor="middle">SSE 进度 / 状态</text>
+
+  <rect class="panel" x="258" y="96" width="196" height="472" rx="14"/>
+  <text class="text head" x="356" y="124" text-anchor="middle">Manager</text>
+  <rect class="node softGreen" x="282" y="154" width="148" height="72" rx="10"/>
+  <text class="text label" x="356" y="181" text-anchor="middle">校验与编排</text>
+  <text class="text small" x="356" y="202" text-anchor="middle">租户 / 能力 / 实例</text>
+  <text class="text small" x="356" y="218" text-anchor="middle">仅部署运行中实例</text>
+  <rect class="node softGreen" x="282" y="264" width="148" height="86" rx="10"/>
+  <text class="text label" x="356" y="290" text-anchor="middle">读取平台配置</text>
+  <text class="text small" x="356" y="311" text-anchor="middle">Provider / MCP</text>
+  <text class="text small" x="356" y="327" text-anchor="middle">Skill 文件</text>
+  <text class="text small" x="356" y="343" text-anchor="middle">RAG / Search 范围</text>
+  <rect class="node softGreen" x="282" y="396" width="148" height="74" rx="10"/>
+  <text class="text label" x="356" y="424" text-anchor="middle">写入 Runtime</text>
+  <text class="text small" x="356" y="445" text-anchor="middle">config / env / 文件</text>
+  <text class="text tiny" x="356" y="461" text-anchor="middle">Dashboard API + Docker API</text>
+
+  <rect class="panel" x="492" y="96" width="214" height="472" rx="14"/>
+  <text class="text head" x="599" y="124" text-anchor="middle">Runtime</text>
+  <rect class="node softAmber" x="516" y="154" width="166" height="86" rx="10"/>
+  <text class="text label" x="599" y="181" text-anchor="middle">直接能力</text>
+  <text class="text small" x="599" y="202" text-anchor="middle">Models: custom_providers</text>
+  <text class="text small" x="599" y="218" text-anchor="middle">Skill: external_skill</text>
+  <text class="text small" x="599" y="234" text-anchor="middle">MCP: mcp_servers</text>
+  <rect class="node softTeal" x="516" y="296" width="166" height="94" rx="10"/>
+  <text class="text label" x="599" y="323" text-anchor="middle">插件能力</text>
+  <text class="text small" x="599" y="344" text-anchor="middle">NineClaw-QYRAG</text>
+  <text class="text small" x="599" y="360" text-anchor="middle">NineClaw-WebSearch</text>
+  <text class="text tiny" x="599" y="378" text-anchor="middle">读取 QYRAG_* / WEBSEARCH_*</text>
+  <rect class="node softAmber" x="516" y="438" width="166" height="64" rx="10"/>
+  <text class="text label" x="599" y="465" text-anchor="middle">重新加载</text>
+  <text class="text small" x="599" y="486" text-anchor="middle">Gateway / Runtime</text>
+
+  <rect class="panel" x="744" y="96" width="202" height="472" rx="14"/>
+  <text class="text head" x="845" y="124" text-anchor="middle">外部能力服务</text>
+  <rect class="node softRose" x="770" y="206" width="150" height="76" rx="10"/>
+  <text class="text label" x="845" y="233" text-anchor="middle">QY-RAG / RAGFlow</text>
+  <text class="text small" x="845" y="254" text-anchor="middle">数据集 / 文档 / 切片</text>
+  <text class="text tiny" x="845" y="270" text-anchor="middle">/api/v1/retrieval</text>
+  <rect class="node softRose" x="770" y="350" width="150" height="86" rx="10"/>
+  <text class="text label" x="845" y="377" text-anchor="middle">NineClaw-WebSearch</text>
+  <text class="text small" x="845" y="398" text-anchor="middle">搜索 / 正文抽取</text>
+  <text class="text tiny" x="845" y="414" text-anchor="middle">/v1/search / extract</text>
+
+  <path class="line" d="M198 190 H282"/>
+  <path class="line" d="M198 304 H282"/>
+  <path class="line" d="M430 433 H516"/>
+  <path class="line" d="M599 390 V438"/>
+  <path class="dash" d="M516 470 C390 520 268 520 198 470"/>
+
+  <path class="line" d="M430 196 H516"/>
+  <text class="text tiny" x="472" y="185" text-anchor="middle">配置 / 文件</text>
+  <path class="pluginLine" d="M682 336 C724 296 744 260 770 244"/>
+  <text class="text tiny" x="727" y="286" text-anchor="middle">插件反向调用</text>
+  <path class="pluginLine" d="M682 352 C724 360 744 378 770 393"/>
+  <text class="text tiny" x="727" y="376" text-anchor="middle">插件反向调用</text>
+
+  <rect class="panel" x="34" y="594" width="912" height="52" rx="12"/>
+  <text class="text small" x="58" y="618">共性：Manager 通过 Runtime Dashboard API 写 config/env，通过 Docker API 拷贝 Skill 文件，再让 Runtime 重新加载。</text>
+  <text class="text small" x="58" y="638">差异：RAG 和 WebSearch 部署的是插件连接配置，实际检索由 Runtime 内部 Agent 在任务执行时主动发起。</text>
+</svg>

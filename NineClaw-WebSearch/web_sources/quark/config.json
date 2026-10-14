@@ -1,0 +1,25 @@
+{
+  "name": "夸克搜索",
+  "description": "夸克/神马搜索（quark.sm.cn）",
+  "enabled": true,
+  "url_base": "https://quark.sm.cn",
+  "tags": ["general"],
+  "request": {
+    "url": "https://quark.sm.cn/s",
+    "method": "GET",
+    "params": [
+      { "key": "q", "value": "{query}" },
+      { "key": "layout", "value": "html" },
+      { "key": "page", "value": "1" }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

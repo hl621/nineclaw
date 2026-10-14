@@ -1,0 +1,6 @@
+#!/command/with-contenv sh
+set -eu
+
+# The upstream gateway service owns its lifecycle in current Hermes images.
+# Merge the fixed Bridge registration before that service starts.
+exec /opt/hermes/.venv/bin/python /opt/nineclaw/workspace_config_bootstrap.py

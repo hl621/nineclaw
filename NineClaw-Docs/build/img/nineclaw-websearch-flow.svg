@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw WebSearch 泳道流程</title>
+  <desc id="desc">WebSearch 请求从 WebUI 经 Traefik 路径转换进入 WebSearch，并写入独立数据库。</desc>
+  <defs>
+    <marker id="arrow-websearch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#2563eb"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.lane{fill:#fff;stroke:#d7dee8;stroke-width:1.5}.head{fill:#eef2ff}.head2{fill:#ecfeff}.head3{fill:#f0fdf4}.head4{fill:#fff7ed}.step{fill:#fff;stroke:#cbd5e1;stroke-width:1.6}.text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.laneText{font-size:15px;font-weight:700}.small{font-size:13px;fill:#475569}.label{font-size:14px;font-weight:700}.line{stroke:#2563eb;stroke-width:2.4;fill:none;marker-end:url(#arrow-websearch)}.dash{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:5 5;marker-end:url(#arrow-websearch)}
+    </style>
+  </defs>
+  <rect class="bg" width="760" height="560" rx="20"/>
+  <text class="text title" x="34" y="38">WebSearch 搜索请求泳道图</text>
+  <text class="text small" x="34" y="62">搜索任务独立进入 WebSearch，Manager 只维护配置和入口，不承担搜索执行。</text>
+
+  <rect class="lane" x="34" y="86" width="132" height="430"/><rect class="head" x="34" y="86" width="132" height="38"/><text class="text laneText" x="100" y="110" text-anchor="middle">WebUI</text>
+  <rect class="lane" x="166" y="86" width="138" height="430"/><rect class="head2" x="166" y="86" width="138" height="38"/><text class="text laneText" x="235" y="110" text-anchor="middle">Traefik</text>
+  <rect class="lane" x="304" y="86" width="156" height="430"/><rect class="head3" x="304" y="86" width="156" height="38"/><text class="text laneText" x="382" y="110" text-anchor="middle">WebSearch</text>
+  <rect class="lane" x="460" y="86" width="130" height="430"/><rect class="head4" x="460" y="86" width="130" height="38"/><text class="text laneText" x="525" y="110" text-anchor="middle">外部资源</text>
+  <rect class="lane" x="590" y="86" width="136" height="430"/><rect class="head2" x="590" y="86" width="136" height="38"/><text class="text laneText" x="658" y="110" text-anchor="middle">PostgreSQL</text>
+
+  <rect class="step" x="54" y="150" width="92" height="48" rx="9"/><text class="text label" x="100" y="169" text-anchor="middle">提交搜索</text><text class="text small" x="100" y="186" text-anchor="middle">/ws-api/search</text>
+  <rect class="step" x="184" y="150" width="102" height="48" rx="9"/><text class="text label" x="235" y="169" text-anchor="middle">路径对应</text><text class="text small" x="235" y="186" text-anchor="middle">内部 /v1</text>
+  <rect class="step" x="326" y="150" width="112" height="48" rx="9"/><text class="text label" x="382" y="169" text-anchor="middle">接收请求</text><text class="text small" x="382" y="186" text-anchor="middle">/v1/search</text>
+  <path class="line" d="M146 174 H184"/><path class="line" d="M286 174 H326"/>
+
+  <rect class="step" x="326" y="248" width="112" height="54" rx="9"/><text class="text label" x="382" y="268" text-anchor="middle">拆解任务</text><text class="text small" x="382" y="286" text-anchor="middle">搜索/抽取/聚合</text>
+  <rect class="step" x="480" y="248" width="90" height="54" rx="9"/><text class="text label" x="525" y="268" text-anchor="middle">检索资源</text><text class="text small" x="525" y="286" text-anchor="middle">外部搜索</text>
+  <path class="line" d="M438 275 H480"/>
+
+  <rect class="step" x="326" y="346" width="112" height="54" rx="9"/><text class="text label" x="382" y="366" text-anchor="middle">整理结果</text><text class="text small" x="382" y="384" text-anchor="middle">去重/摘要/排序</text>
+  <rect class="step" x="612" y="346" width="92" height="54" rx="9"/><text class="text label" x="658" y="366" text-anchor="middle">保存数据</text><text class="text small" x="658" y="384" text-anchor="middle">websearch DB</text>
+  <path class="line" d="M438 373 H612"/>
+
+  <rect class="step" x="326" y="450" width="112" height="44" rx="9"/><text class="text label" x="382" y="477" text-anchor="middle">返回结果</text>
+  <rect class="step" x="54" y="450" width="92" height="44" rx="9"/><text class="text label" x="100" y="477" text-anchor="middle">展示结果</text>
+  <path class="dash" d="M326 472 H146"/>
+</svg>

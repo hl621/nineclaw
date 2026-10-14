@@ -1,0 +1,33 @@
+{
+  "name": "arXiv论文",
+  "description": "arXiv 预印本论文搜索（Atom API）",
+  "enabled": true,
+  "url_base": "https://arxiv.org",
+  "request": {
+    "url": "https://export.arxiv.org/api/query",
+    "method": "GET",
+    "params": [
+      {
+        "key": "search_query",
+        "value": "all:{query}"
+      },
+      {
+        "key": "start",
+        "value": "0"
+      },
+      {
+        "key": "max_results",
+        "value": "10"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "NineClaw-WebSearch/1.0"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

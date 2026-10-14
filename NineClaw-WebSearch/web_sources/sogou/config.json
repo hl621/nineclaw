@@ -1,0 +1,19 @@
+{
+  "name": "搜狗搜索引擎",
+  "description": "搜狗搜索引擎",
+  "enabled": true,
+  "request": {
+    "url": "https://sogou.com/web",
+    "method": "GET",
+    "params": [
+      {
+        "key": "query",
+        "value": "{query}"
+      }
+    ],
+    "headers": [],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

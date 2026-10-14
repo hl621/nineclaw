@@ -1,0 +1,18 @@
+#!/command/with-contenv sh
+set -eu
+
+export HOME="${HERMES_HOME:-/opt/data}"
+export HERMES_WEBUI_STATE_DIR="${HERMES_WEBUI_STATE_DIR:-$HOME/webui}"
+export UV_CACHE_DIR="$HERMES_WEBUI_STATE_DIR/uv-cache"
+WEBUI_PYTHON="${HERMES_WEBUI_PYTHON:-/opt/hermes/.venv/bin/python}"
+
+mkdir -p "$HERMES_WEBUI_STATE_DIR" "$UV_CACHE_DIR"
+chown -R hermes:hermes "$HERMES_WEBUI_STATE_DIR" 2>/dev/null || true
+
+if [ ! -x "$WEBUI_PYTHON" ]; then
+  echo "[hermes-webui] Python 解释器不存在或不可执行: $WEBUI_PYTHON" >&2
+  exit 1
+fi
+
+cd /opt/hermes-webui
+exec s6-setuidgid hermes "$WEBUI_PYTHON" bootstrap.py --no-browser --skip-agent-install --foreground "${HERMES_WEBUI_PORT:-8643}"

@@ -1,0 +1,49 @@
+{
+  "name": "新浪搜索",
+  "description": "新浪站内搜索 JSON API，返回新闻等混合结果",
+  "enabled": true,
+  "url_base": "https://search.sina.com.cn",
+  "request": {
+    "url": "https://search.sina.com.cn/api/search",
+    "method": "GET",
+    "params": [
+      {
+        "key": "q",
+        "value": "{query}"
+      },
+      {
+        "key": "tp",
+        "value": "mix"
+      },
+      {
+        "key": "sort",
+        "value": "0"
+      },
+      {
+        "key": "page",
+        "value": "1"
+      },
+      {
+        "key": "size",
+        "value": "10"
+      },
+      {
+        "key": "from",
+        "value": "search_result"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      },
+      {
+        "key": "Referer",
+        "value": "https://search.sina.com.cn/"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

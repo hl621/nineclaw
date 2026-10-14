@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d
+    ports:
+      - "15432:5432"
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d nineclaw_manager']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+    networks:
+      - qiyuan_net
+
+  app:
+    image: nineclaw-websearch:latest
+    build: .
+    container_name: nineclaw-websearch
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:password@postgres:5432/nineclaw_websearch
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+    networks:
+      - qiyuan_net
+
+volumes:
+  postgres_data:
+
+networks:
+  qiyuan_net:
+    driver: bridge

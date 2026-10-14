@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "description": "本地翻译词典，键为源语言，目标语言值",
+    "source_lang": "zh",
+    "target_lang": "en",
+    "created": "2024-01-01"
+  },
+  "你好": "Hello",
+  "世界": "World",
+  "翻译": "Translation",
+  "描述": "Description",
+  "技能": "Skill",
+  "脚本": "Script",
+  "文件": "File",
+  "项目": "Project",
+  "创建": "Create",
+  "修改": "Modify",
+  "删除": "Delete",
+  "查询": "Query",
+  "帮助": "Help",
+  "错误": "Error",
+  "成功": "Success",
+  "失败": "Failed",
+  "警告": "Warning",
+  "信息": "Info"
+}

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="820" viewBox="0 0 760 820" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw Traefik 路由图</title>
+  <desc id="desc">展示固定服务路由、WebSearch 内部路径和 Runtime 动态路由的端口对应关系。</desc>
+  <defs>
+    <marker id="arrow-route" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}.panel{fill:#fff;stroke:#d8e2ec;stroke-width:2}.box{fill:#fff;stroke:#cbd5e1;stroke-width:1.8}.traefik{fill:#eff6ff;stroke:#2563eb}.svc{fill:#ecfeff;stroke:#0891b2}.mgr{fill:#f0fdf4;stroke:#16a34a}.rt{fill:#fff7ed;stroke:#ea580c}.text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#0f172a}.title{font-size:24px;font-weight:800}.section{font-size:16px;font-weight:750;fill:#475569}.name{font-size:15.5px;font-weight:750}.small{font-size:12.5px;fill:#475569}.mono{font-family:SFMono-Regular,Consolas,Menlo,monospace;font-size:11.5px;fill:#334155}.line{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow-route)}.note{font-size:12px;fill:#64748b}
+    </style>
+  </defs>
+  <rect class="bg" width="760" height="820"/>
+  <text class="text title" x="34" y="42">Traefik 路由与端口映射</text>
+  <text class="text small" x="34" y="64">所有外部 HTTP 请求先进入 host:8510，再由 Traefik 按路径前缀转发。</text>
+
+  <rect class="panel" x="28" y="92" width="704" height="360" rx="20"/>
+  <text class="text section" x="52" y="126">固定服务路由</text>
+
+  <rect class="box traefik" x="58" y="166" width="140" height="74" rx="13"/>
+  <text class="text name" x="100" y="194">Traefik</text>
+  <text class="mono" x="86" y="216">8510 -> :80</text>
+
+  <rect class="box svc" x="270" y="134" width="390" height="42" rx="10"/>
+  <text class="mono" x="290" y="160">/        -> nineclaw-webui:80 /</text>
+  <path class="line" d="M198 188 C230 170 242 155 270 155"/>
+
+  <rect class="box svc" x="270" y="188" width="390" height="42" rx="10"/>
+  <text class="mono" x="290" y="214">/docs   -> nineclaw-docs:3000 /docs</text>
+  <path class="line" d="M198 198 H270"/>
+
+  <rect class="box mgr" x="270" y="242" width="390" height="42" rx="10"/>
+  <text class="mono" x="290" y="268">/v1     -> nineclaw-manager:8000 /v1</text>
+  <path class="line" d="M198 208 C230 226 242 263 270 263"/>
+
+  <rect class="box svc" x="270" y="296" width="390" height="58" rx="10"/>
+  <text class="mono" x="290" y="320">/ws-api/... -> nineclaw-websearch:8000</text>
+  <text class="mono" x="290" y="338">             内部路径：/v1/...</text>
+  <path class="line" d="M128 240 C128 326 222 325 270 325"/>
+
+  <rect class="box svc" x="270" y="366" width="390" height="42" rx="10"/>
+  <text class="mono" x="290" y="392">/sandbox -> opensandbox-server:8090 /sandbox</text>
+  <path class="line" d="M108 240 C108 388 224 387 270 387"/>
+
+  <text class="note" x="52" y="430">固定服务中，/ws-api 对应 WebSearch 内部 /v1；其他固定服务基本保持同名路径。</text>
+
+  <rect class="panel" x="28" y="486" width="704" height="280" rx="20"/>
+  <text class="text section" x="52" y="520">Runtime 动态路由</text>
+
+  <rect class="box mgr" x="54" y="548" width="156" height="62" rx="13"/>
+  <text class="text name" x="94" y="574">Manager</text>
+  <text class="small" x="78" y="594">创建容器并写 labels</text>
+
+  <rect class="box traefik" x="270" y="548" width="136" height="62" rx="13"/>
+  <text class="text name" x="312" y="574">Traefik</text>
+  <text class="small" x="294" y="594">Docker Provider</text>
+
+  <path class="line" d="M210 579 H270"/>
+
+  <rect class="box rt" x="454" y="526" width="220" height="54" rx="10"/>
+  <text class="mono" x="474" y="549">/gateway/* -> runtime:8642</text>
+  <text class="mono" x="474" y="566">              内部路径：/*</text>
+  <path class="line" d="M406 570 C428 555 434 553 454 553"/>
+
+  <rect class="box rt" x="454" y="596" width="220" height="54" rx="10"/>
+  <text class="mono" x="474" y="619">/webui/*   -> runtime:8643</text>
+  <text class="mono" x="474" y="636">              内部路径：/*</text>
+  <path class="line" d="M406 579 H454"/>
+
+  <rect class="box rt" x="454" y="666" width="220" height="54" rx="10"/>
+  <text class="mono" x="474" y="689">/dashboard/* -> runtime:8644</text>
+  <text class="mono" x="474" y="706">                内部路径：/*</text>
+  <path class="line" d="M406 588 C430 620 430 693 454 693"/>
+
+  <text class="note" x="52" y="748">Runtime 对外统一挂在实例路径下，内部由 gateway / webui / dashboard 三个端口承载。</text>
+</svg>

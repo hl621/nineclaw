@@ -1,0 +1,94 @@
+#!/command/with-contenv sh
+set -eu
+
+src=/opt/hermes-seeds/skills
+dest="${HERMES_HOME:-/opt/data}/skills"
+stage="${dest}.nineclaw-stage"
+backup="${dest}.nineclaw-backup"
+manifest="${dest}.nineclaw-manifest"
+parent=$(dirname "$dest")
+sync_mode="${NINECLAW_SKILLS_SYNC_MODE:-replace}"
+
+# 输出技能初始化错误并终止容器启动流程。
+fail() {
+    printf 'NineClaw 技能初始化失败：%s\n' "$1" >&2
+    exit 1
+}
+
+# 清理临时文件，并在目录切换失败时恢复原有技能。
+cleanup() {
+    rm -rf "$stage"
+    rm -f "$manifest"
+
+    if [ ! -e "$dest" ] && [ -e "$backup" ]; then
+        mv "$backup" "$dest" 2>/dev/null || true
+    fi
+}
+
+trap cleanup EXIT
+trap 'exit 1' HUP INT TERM
+
+[ -d "$src" ] || fail "镜像种子目录不存在：$src"
+
+case "$sync_mode" in
+    replace|merge) ;;
+    *) fail "NINECLAW_SKILLS_SYNC_MODE 只能是 replace 或 merge，当前值：$sync_mode" ;;
+esac
+
+mkdir -p "$parent"
+
+# 上次切换中断且目标目录缺失时，优先恢复备份。
+if [ ! -e "$dest" ] && [ -e "$backup" ]; then
+    mv "$backup" "$dest"
+fi
+
+[ ! -e "$dest" ] || [ -d "$dest" ] || fail "目标路径不是目录：$dest"
+
+rm -rf "$stage"
+if [ -e "$backup" ]; then
+    rm -rf "$backup"
+fi
+
+find "$src" -mindepth 2 -type f -name 'SKILL.md' -print > "$manifest"
+[ -s "$manifest" ] || fail "镜像种子目录中没有有效的 SKILL.md"
+
+mkdir -p "$stage"
+
+# merge 模式保留运行时已有技能，再覆盖镜像内同路径技能。
+# replace 模式只使用镜像种子目录，确保 /opt/data/skills 和仓库 skills/ 一致。
+if [ "$sync_mode" = "merge" ] && [ -d "$dest" ]; then
+    cp -a "$dest"/. "$stage"/
+fi
+
+skill_count=0
+while IFS= read -r skill_md; do
+    skill_dir=${skill_md%/SKILL.md}
+    relative_path=${skill_dir#"$src"/}
+
+    [ "$relative_path" != "$skill_dir" ] || fail "技能路径不在种子目录中：$skill_dir"
+    [ -n "$relative_path" ] || fail "SKILL.md 必须位于独立技能子目录中"
+
+    target="$stage/$relative_path"
+    mkdir -p "$(dirname "$target")"
+    rm -rf "$target"
+    cp -a "$skill_dir" "$target"
+    skill_count=$((skill_count + 1))
+done < "$manifest"
+
+chown -R hermes:hermes "$stage"
+rm -f "$manifest"
+
+# 通过同一文件系统内的目录重命名完成原子切换。
+if [ -d "$dest" ]; then
+    mv "$dest" "$backup"
+fi
+
+if ! mv "$stage" "$dest"; then
+    [ ! -e "$backup" ] || mv "$backup" "$dest"
+    fail "无法切换到新的技能目录"
+fi
+
+rm -rf "$backup"
+trap - EXIT HUP INT TERM
+
+printf 'NineClaw 已以 %s 模式同步 %s 个镜像内置技能到 %s\n' "$sync_mode" "$skill_count" "$dest"

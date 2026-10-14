@@ -1,0 +1,302 @@
+openapi: 3.0.3
+info:
+  title: NineClaw Manager - 知识库 API
+  version: 1.0.0
+  description: |
+    NineClaw Manager 自研知识库接口，部署基址：
+
+    **http://172.18.33.28:8000**
+
+    业务接口统一前缀 `/v1`，例如创建知识库：
+
+    `POST http://172.18.33.28:8000/v1/knowledge`
+
+    纯本地文件存储（`knowledge_storage/`），不依赖 RAGFlow 或其它外部服务。
+
+servers:
+  - url: http://172.18.33.28:8000
+    description: 生产/测试环境（默认）
+
+paths:
+  /health:
+    get:
+      tags: [system]
+      summary: 健康检查
+      operationId: healthCheck
+      responses:
+        '200':
+          description: OK
+
+  /v1/knowledge:
+    get:
+      tags: [knowledge]
+      summary: 列出知识库
+      operationId: listKnowledge
+      parameters:
+        - name: X-Tenant-ID
+          in: header
+          schema:
+            type: string
+            default: default
+      responses:
+        '200':
+          description: OK
+    post:
+      tags: [knowledge]
+      summary: 创建知识库
+      operationId: createKnowledge
+      parameters:
+        - name: X-Tenant-ID
+          in: header
+          schema:
+            type: string
+            default: default
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKnowledgeRequest'
+            examples:
+              basic:
+                summary: 最简
+                value:
+                  name: apifox_test_kb
+              full:
+                summary: 完整参数
+                value:
+                  name: apifox_test_kb
+                  description: Apifox 测试
+                  group: 平台建设
+                  owner: 阿文
+                  embedding_model: bge-large@local
+                  permission: me
+                  chunk_method: naive
+                  parser_config:
+                    chunk_token_num: 128
+                    delimiter: "\n"
+                    layout_recognize: DeepDOC
+                    html4excel: false
+                    raptor:
+                      use_raptor: false
+                    graphrag:
+                      use_graphrag: false
+      responses:
+        '201':
+          description: 创建成功
+
+  /v1/knowledge/{kb_id}:
+    get:
+      tags: [knowledge]
+      summary: 知识库详情（含文件列表）
+      operationId: getKnowledge
+      parameters:
+        - name: kb_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    put:
+      tags: [knowledge]
+      summary: 更新知识库元数据
+      operationId: updateKnowledge
+      parameters:
+        - name: kb_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateKnowledgeRequest'
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags: [knowledge]
+      summary: 删除知识库
+      description: |
+        删除整个知识库目录（meta.json + documents/），不可恢复。
+        示例：`DELETE http://172.18.33.28:8000/v1/knowledge/apifox-test-kb`
+      operationId: deleteKnowledge
+      parameters:
+        - name: kb_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 知识库 ID
+      responses:
+        '200':
+          description: 删除成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteKnowledgeResponse'
+              example:
+                code: 0
+                message: success
+                data:
+                  deleted: apifox-test-kb
+        '404':
+          description: 知识库不存在
+
+  /v1/knowledge/{kb_id}/files:
+    post:
+      tags: [knowledge]
+      summary: 上传文档
+      operationId: uploadKnowledgeFile
+      parameters:
+        - name: kb_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: OK
+
+  /v1/knowledge/{kb_id}/files/{file_id}/download:
+    get:
+      tags: [knowledge]
+      summary: 下载文档
+      description: |
+        返回原始文件流（非 JSON）。`file_id` 为详情接口 `files[].id`。
+        示例：`GET http://172.18.33.28:8000/v1/knowledge/my-kb/files/abc123_doc.md/download`
+      operationId: downloadKnowledgeFile
+      parameters:
+        - name: kb_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: file_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 文件二进制流
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 知识库或文件不存在
+
+  /v1/knowledge/{kb_id}/reindex:
+    post:
+      tags: [knowledge]
+      summary: 刷新索引状态
+      operationId: reindexKnowledge
+      parameters:
+        - name: kb_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+    CreateKnowledgeRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          maxLength: 128
+        avatar:
+          type: string
+        description:
+          type: string
+        embedding_model:
+          type: string
+        permission:
+          type: string
+          enum: [me, team]
+          default: me
+        chunk_method:
+          type: string
+          enum:
+            - naive
+            - book
+            - email
+            - laws
+            - manual
+            - one
+            - paper
+            - picture
+            - presentation
+            - qa
+            - table
+            - tag
+        parser_config:
+          type: object
+          additionalProperties: true
+        parse_type:
+          type: integer
+        pipeline_id:
+          type: string
+        group:
+          type: string
+        owner:
+          type: string
+        serial:
+          type: string
+        id:
+          type: string
+          description: 可选 slug，省略则从 name 生成
+
+    DeleteKnowledgeData:
+      type: object
+      required: [deleted]
+      properties:
+        deleted:
+          type: string
+          description: 已删除的知识库 ID
+
+    DeleteKnowledgeResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 0
+        message:
+          type: string
+          example: success
+        data:
+          $ref: '#/components/schemas/DeleteKnowledgeData'
+
+    UpdateKnowledgeRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        group:
+          type: string
+        owner:
+          type: string
+        status:
+          type: string
+          enum: [pending, building, success, part_success, fail]

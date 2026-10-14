@@ -1,0 +1,21 @@
+#!/command/with-contenv sh
+set -eu
+
+src=/opt/hermes-plugins
+dest="${HERMES_HOME:-/opt/data}/plugins"
+
+[ -d "$src" ] || exit 0
+
+mkdir -p "$dest"
+
+for plugin in "$src"/*; do
+    [ -d "$plugin" ] || continue
+
+    name=$(basename "$plugin")
+    target="$dest/$name"
+
+    rm -rf "$target"
+    cp -a "$plugin" "$target"
+done
+
+chown -R hermes:hermes "$dest" 2>/dev/null || true

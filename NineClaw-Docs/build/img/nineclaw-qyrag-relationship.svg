@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw 与 QYRAG 关系图</title>
+  <desc id="desc">A relationship diagram showing that NineClaw connects to an independent QYRAG/RAGFlow service through Manager and Runtime plugin paths.</desc>
+  <defs>
+    <marker id="arrow-qyrag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d8e2ec;stroke-width:1.8}
+      .nine{fill:#eff6ff;stroke:#2563eb;stroke-width:1.8}
+      .mgr{fill:#f0fdf4;stroke:#16a34a;stroke-width:1.8}
+      .runtime{fill:#fff7ed;stroke:#ea580c;stroke-width:1.8}
+      .qyrag{fill:#faf5ff;stroke:#9333ea;stroke-width:1.8}
+      .data{fill:#f8fafc;stroke:#64748b;stroke-width:1.8}
+      .text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}
+      .title{font-size:25px;font-weight:800}
+      .sub{font-size:14px;fill:#475569}
+      .section{font-size:16px;font-weight:800;fill:#334155}
+      .label{font-size:16px;font-weight:800}
+      .small{font-size:12.5px;fill:#475569}
+      .mono{font-family:SFMono-Regular,Consolas,Menlo,monospace;font-size:11.5px;fill:#334155}
+      .line{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow-qyrag)}
+      .dash{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:5 5;marker-end:url(#arrow-qyrag)}
+      .divider{stroke:#cbd5e1;stroke-width:1.5;stroke-dasharray:6 6}
+    </style>
+  </defs>
+
+  <rect class="bg" width="1120" height="650" rx="22"/>
+  <text class="text title" x="42" y="46">QYRAG 与 NineClaw 的关系</text>
+  <text class="text sub" x="42" y="70">QYRAG 是独立知识库服务；NineClaw 通过配置连接它，并把能力包装给 WebUI 与 Runtime 使用。</text>
+
+  <rect class="panel" x="40" y="104" width="500" height="470" rx="18"/>
+  <rect class="panel" x="580" y="104" width="500" height="470" rx="18"/>
+  <text class="text section" x="290" y="136" text-anchor="middle">NineClaw 主系统</text>
+  <text class="text section" x="830" y="136" text-anchor="middle">独立 QYRAG / RAGFlow 服务</text>
+
+  <rect class="nine" x="92" y="182" width="178" height="78" rx="13"/>
+  <text class="text label" x="181" y="212" text-anchor="middle">WebUI</text>
+  <text class="text small" x="181" y="236" text-anchor="middle">RAG 页面 / 设置</text>
+
+  <rect class="mgr" x="318" y="182" width="178" height="78" rx="13"/>
+  <text class="text label" x="407" y="212" text-anchor="middle">Manager</text>
+  <text class="text small" x="407" y="236" text-anchor="middle">配置保存 / BFF 适配</text>
+
+  <rect class="runtime" x="205" y="392" width="178" height="78" rx="13"/>
+  <text class="text label" x="294" y="422" text-anchor="middle">Runtime</text>
+  <text class="text small" x="294" y="446" text-anchor="middle">QYRAG 插件调用</text>
+
+  <rect class="qyrag" x="632" y="170" width="214" height="96" rx="13"/>
+  <text class="text label" x="739" y="202" text-anchor="middle">QYRAG API</text>
+  <text class="text small" x="739" y="228" text-anchor="middle">文档 / 切片 / 检索</text>
+  <text class="text mono" x="739" y="248" text-anchor="middle">http://xxx:8513</text>
+
+  <rect class="data" x="900" y="170" width="132" height="96" rx="13"/>
+  <text class="text label" x="966" y="202" text-anchor="middle">知识库数据</text>
+  <text class="text small" x="966" y="228" text-anchor="middle">解析结果</text>
+  <text class="text small" x="966" y="248" text-anchor="middle">向量与切片</text>
+
+  <rect class="qyrag" x="702" y="392" width="214" height="78" rx="13"/>
+  <text class="text label" x="809" y="422" text-anchor="middle">召回与重排</text>
+  <text class="text small" x="809" y="446" text-anchor="middle">为 Agent 返回证据片段</text>
+
+  <path class="line" d="M270 221 H318"/>
+  <path class="line" d="M496 221 H632"/>
+  <path class="line" d="M846 218 H900"/>
+  <path class="line" d="M383 431 H702"/>
+  <path class="line" d="M809 392 C809 336 755 322 739 266"/>
+  <path class="dash" d="M407 260 C407 318 330 344 294 392"/>
+
+  <line class="divider" x1="560" y1="126" x2="560" y2="554"/>
+
+  <text class="text small" x="182" y="304" text-anchor="middle">用户仍在 NineClaw 页面操作</text>
+  <text class="text small" x="407" y="304" text-anchor="middle">Manager 负责连接配置和接口适配</text>
+  <text class="text small" x="294" y="512" text-anchor="middle">部署后 Runtime 可在任务执行中调用知识库</text>
+
+  <rect class="data" x="118" y="540" width="884" height="40" rx="10"/>
+  <text class="text small" x="560" y="565" text-anchor="middle">边界：NineClaw 不内置 QYRAG 代码；QYRAG 独立部署、独立升级、独立维护知识库底层能力。</text>
+</svg>

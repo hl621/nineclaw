@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw Docs 访问关系</title>
+  <desc id="desc">Docs 通过 Traefik 的 docs 路由挂载到统一入口。</desc>
+  <defs>
+    <marker id="arrow-docs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#2563eb"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.box{fill:#fff;stroke:#cbd5e1;stroke-width:2}.blue{fill:#eff6ff;stroke:#2563eb}.green{fill:#f0fdf4;stroke:#16a34a}.text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.label{font-size:17px;font-weight:700}.small{font-size:14px;fill:#475569}.line{stroke:#2563eb;stroke-width:3;fill:none;marker-end:url(#arrow-docs)}
+    </style>
+  </defs>
+  <rect class="bg" width="760" height="330" rx="20"/>
+  <text class="text title" x="42" y="48">Docs 挂载关系</text>
+  <text class="text small" x="42" y="73">文档站点不参与业务调用链，只通过统一入口提供访问。</text>
+  <rect class="box blue" x="55" y="142" width="150" height="70" rx="14"/><text class="text label" x="99" y="173">用户</text><text class="text small" x="78" y="196">访问 /docs</text>
+  <rect class="box blue" x="290" y="142" width="160" height="70" rx="14"/><text class="text label" x="334" y="173">Traefik</text><text class="text small" x="331" y="196">:8510</text>
+  <rect class="box green" x="535" y="142" width="170" height="70" rx="14"/><text class="text label" x="580" y="173">Docs</text><text class="text small" x="568" y="196">容器端口 3000</text>
+  <path class="line" d="M205 177 H290"/>
+  <path class="line" d="M450 177 H535"/>
+</svg>

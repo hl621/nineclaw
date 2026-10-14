@@ -1,0 +1,1497 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "NineClaw WebSearch",
+        "description": "Configurable search & extract service",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/sources": {
+            "get": {
+                "tags": [
+                    "sources"
+                ],
+                "summary": "List Sources",
+                "operationId": "list_sources_v1_sources_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "sources"
+                ],
+                "summary": "Create Source",
+                "description": "Create a new source card (directory + initial config.json).",
+                "operationId": "create_source_v1_sources_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSourceRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sources/{source_id}": {
+            "get": {
+                "tags": [
+                    "sources"
+                ],
+                "summary": "Get Source Detail",
+                "operationId": "get_source_detail_v1_sources__source_id__get",
+                "parameters": [
+                    {
+                        "name": "source_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Source Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "sources"
+                ],
+                "summary": "Update Source",
+                "description": "Update source card metadata.",
+                "operationId": "update_source_v1_sources__source_id__put",
+                "parameters": [
+                    {
+                        "name": "source_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Source Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSourceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "sources"
+                ],
+                "summary": "Delete Source",
+                "description": "Delete an entire source card directory.",
+                "operationId": "delete_source_v1_sources__source_id__delete",
+                "parameters": [
+                    {
+                        "name": "source_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "title": "Source Id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/search": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "summary": "Search",
+                "operationId": "search_v1_search_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SearchResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/search/test_score": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "summary": "Test Score",
+                "description": "Re-score existing search results with explicit per-source weights.",
+                "operationId": "test_score_v1_search_test_score_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TestScoreRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SearchResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/extract_detail": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "summary": "Extract Detail",
+                "operationId": "extract_detail_v1_extract_detail_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExtractRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExtractResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/extract_listlink": {
+            "post": {
+                "tags": [
+                    "search"
+                ],
+                "summary": "Extract Listlink",
+                "operationId": "extract_listlink_v1_extract_listlink_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExtractRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExtractListLinkResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sources/fetch": {
+            "post": {
+                "tags": [
+                    "authoring"
+                ],
+                "summary": "Fetch",
+                "description": "Execute the request config with a test query, save config.json + response.html.",
+                "operationId": "fetch_v1_sources_fetch_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FetchRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FetchResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sources/save_extractor": {
+            "post": {
+                "tags": [
+                    "authoring"
+                ],
+                "summary": "Save Extractor",
+                "description": "Save extract.py code to the source directory.",
+                "operationId": "save_extractor_v1_sources_save_extractor_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SaveExtractorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sources/test": {
+            "post": {
+                "tags": [
+                    "authoring"
+                ],
+                "summary": "Test Source",
+                "description": "Execute full search flow: fetch with query + run extract.py, return results.",
+                "operationId": "test_source_v1_sources_test_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TestRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TestResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sources/debug_extractor": {
+            "post": {
+                "tags": [
+                    "authoring"
+                ],
+                "summary": "Debug Extractor",
+                "description": "Run saved extract.py against local response.html via subprocess with real-time SSE streaming.",
+                "operationId": "debug_extractor_v1_sources_debug_extractor_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DebugExtractorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "summary": "Health Check",
+                "operationId": "health_check_health_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    },
+                                    "type": "object",
+                                    "title": "Response Health Check Health Get"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateSourceRequest": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Tags",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "name"
+                ],
+                "title": "CreateSourceRequest"
+            },
+            "DebugExtractorRequest": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id"
+                ],
+                "title": "DebugExtractorRequest"
+            },
+            "ExtractListLinkResponse": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "$ref": "#/components/schemas/ExtractedListLink"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "results"
+                ],
+                "title": "ExtractListLinkResponse"
+            },
+            "ExtractRequest": {
+                "properties": {
+                    "urls": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Urls"
+                    },
+                    "proxies": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Proxies",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "urls"
+                ],
+                "title": "ExtractRequest"
+            },
+            "ExtractResponse": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "$ref": "#/components/schemas/ExtractedContent"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "results"
+                ],
+                "title": "ExtractResponse"
+            },
+            "ExtractedContent": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "title": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Title"
+                    },
+                    "content": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Content"
+                    },
+                    "content_xpath": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Content Xpath"
+                    },
+                    "publish_date": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Publish Date"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url"
+                ],
+                "title": "ExtractedContent"
+            },
+            "ExtractedListLink": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "link_blocks": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/LinkBlock"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Link Blocks"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url"
+                ],
+                "title": "ExtractedListLink"
+            },
+            "FetchRequest": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "config": {
+                        "$ref": "#/components/schemas/RequestConfig"
+                    },
+                    "query": {
+                        "type": "string",
+                        "title": "Query"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "config",
+                    "query"
+                ],
+                "title": "FetchRequest"
+            },
+            "FetchResponse": {
+                "properties": {
+                    "status_code": {
+                        "type": "integer",
+                        "title": "Status Code"
+                    },
+                    "html": {
+                        "type": "string",
+                        "title": "Html"
+                    },
+                    "saved": {
+                        "type": "boolean",
+                        "title": "Saved"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "status_code",
+                    "html",
+                    "saved"
+                ],
+                "title": "FetchResponse"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "LinkBlock": {
+                "properties": {
+                    "link_xpath": {
+                        "type": "string",
+                        "title": "Link Xpath"
+                    },
+                    "link_items": {
+                        "items": {
+                            "$ref": "#/components/schemas/LinkItem"
+                        },
+                        "type": "array",
+                        "title": "Link Items"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "link_xpath",
+                    "link_items"
+                ],
+                "title": "LinkBlock"
+            },
+            "LinkItem": {
+                "properties": {
+                    "url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Url"
+                    },
+                    "title": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Title"
+                    }
+                },
+                "type": "object",
+                "title": "LinkItem"
+            },
+            "RequestConfig": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "method": {
+                        "type": "string",
+                        "title": "Method",
+                        "default": "GET"
+                    },
+                    "params": {
+                        "items": {
+                            "$ref": "#/components/schemas/RequestParam"
+                        },
+                        "type": "array",
+                        "title": "Params",
+                        "default": []
+                    },
+                    "headers": {
+                        "items": {
+                            "$ref": "#/components/schemas/RequestParam"
+                        },
+                        "type": "array",
+                        "title": "Headers",
+                        "default": []
+                    },
+                    "body": {
+                        "type": "string",
+                        "title": "Body",
+                        "default": ""
+                    },
+                    "body_type": {
+                        "type": "string",
+                        "title": "Body Type",
+                        "default": "application/json"
+                    },
+                    "proxy_pool": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Proxy Pool",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url"
+                ],
+                "title": "RequestConfig"
+            },
+            "RequestParam": {
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "title": "Key"
+                    },
+                    "value": {
+                        "type": "string",
+                        "title": "Value"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "key",
+                    "value"
+                ],
+                "title": "RequestParam"
+            },
+            "SaveExtractorRequest": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "code"
+                ],
+                "title": "SaveExtractorRequest"
+            },
+            "SearchRequest": {
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "title": "Query"
+                    },
+                    "tags": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Tags"
+                    },
+                    "include_sources": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Include Sources"
+                    },
+                    "exclude_sources": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Exclude Sources",
+                        "default": []
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "title": "Limit",
+                        "default": 20
+                    },
+                    "request_timeout_ms": {
+                        "type": "integer",
+                        "title": "Request Timeout Ms",
+                        "default": 10000
+                    },
+                    "parse_timeout_ms": {
+                        "type": "integer",
+                        "title": "Parse Timeout Ms",
+                        "default": 5000
+                    },
+                    "merge_result": {
+                        "type": "boolean",
+                        "title": "Merge Result",
+                        "default": true
+                    },
+                    "proxy_pool": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Proxy Pool",
+                        "default": []
+                    },
+                    "cover_default_proxy": {
+                        "type": "boolean",
+                        "title": "Cover Default Proxy",
+                        "default": false
+                    },
+                    "cover_default_weight": {
+                        "additionalProperties": {
+                            "type": "number"
+                        },
+                        "type": "object",
+                        "title": "Cover Default Weight",
+                        "example": {}
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query"
+                ],
+                "title": "SearchRequest"
+            },
+            "SearchResponse": {
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "title": "Query"
+                    },
+                    "results": {
+                        "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    },
+                    "stats": {
+                        "items": {
+                            "$ref": "#/components/schemas/SourceStats"
+                        },
+                        "type": "array",
+                        "title": "Stats",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query",
+                    "results"
+                ],
+                "title": "SearchResponse"
+            },
+            "SearchResult": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "Title"
+                    },
+                    "desc": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Desc"
+                    },
+                    "score": {
+                        "type": "number",
+                        "title": "Score",
+                        "default": 0
+                    },
+                    "sources": {
+                        "items": {
+                            "$ref": "#/components/schemas/SourceHit"
+                        },
+                        "type": "array",
+                        "title": "Sources",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url",
+                    "title"
+                ],
+                "title": "SearchResult"
+            },
+            "SourceHit": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "source_name": {
+                        "type": "string",
+                        "title": "Source Name"
+                    },
+                    "rank": {
+                        "type": "integer",
+                        "title": "Rank"
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "Title",
+                        "default": ""
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "default": ""
+                    },
+                    "desc": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Desc"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "source_name",
+                    "rank"
+                ],
+                "title": "SourceHit"
+            },
+            "SourceStats": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "source_name": {
+                        "type": "string",
+                        "title": "Source Name"
+                    },
+                    "status": {
+                        "type": "string",
+                        "title": "Status"
+                    },
+                    "result_count": {
+                        "type": "integer",
+                        "title": "Result Count"
+                    },
+                    "request_time_ms": {
+                        "type": "integer",
+                        "title": "Request Time Ms"
+                    },
+                    "parse_time_ms": {
+                        "type": "integer",
+                        "title": "Parse Time Ms"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "title": "Weight"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "source_name",
+                    "status",
+                    "result_count",
+                    "request_time_ms",
+                    "parse_time_ms",
+                    "weight"
+                ],
+                "title": "SourceStats"
+            },
+            "TestRequest": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "query": {
+                        "type": "string",
+                        "title": "Query"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "query"
+                ],
+                "title": "TestRequest"
+            },
+            "TestResponse": {
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "title": "Success"
+                    },
+                    "results": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/TestResultItem"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Results"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Error"
+                    },
+                    "request_time_ms": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Request Time Ms"
+                    },
+                    "parse_time_ms": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Parse Time Ms"
+                    },
+                    "result_count": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Result Count"
+                    },
+                    "status_code": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Status Code"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "success"
+                ],
+                "title": "TestResponse"
+            },
+            "TestResultItem": {
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "Title"
+                    },
+                    "desc": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Desc"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url",
+                    "title"
+                ],
+                "title": "TestResultItem"
+            },
+            "TestScoreRequest": {
+                "properties": {
+                    "sources": {
+                        "items": {
+                            "$ref": "#/components/schemas/WeightedSource"
+                        },
+                        "type": "array",
+                        "title": "Sources"
+                    },
+                    "results": {
+                        "items": {
+                            "$ref": "#/components/schemas/SearchResult"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "title": "Limit",
+                        "default": 20
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "sources",
+                    "results"
+                ],
+                "title": "TestScoreRequest"
+            },
+            "UpdateSourceRequest": {
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "tags": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Tags"
+                    },
+                    "enabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Enabled"
+                    },
+                    "weight": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Weight"
+                    },
+                    "url_base": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Url Base"
+                    }
+                },
+                "type": "object",
+                "title": "UpdateSourceRequest"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "WeightedSource": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Weight"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "weight"
+                ],
+                "title": "WeightedSource"
+            }
+        }
+    }
+}

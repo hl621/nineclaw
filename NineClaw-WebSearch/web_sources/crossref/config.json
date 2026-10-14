@@ -1,0 +1,29 @@
+{
+  "name": "Crossref论文",
+  "description": "Crossref 学术论文 DOI 元数据搜索",
+  "enabled": true,
+  "url_base": "https://www.crossref.org",
+  "request": {
+    "url": "https://api.crossref.org/works",
+    "method": "GET",
+    "params": [
+      {
+        "key": "query",
+        "value": "{query}"
+      },
+      {
+        "key": "rows",
+        "value": "10"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "NineClaw-WebSearch/1.0 (mailto:admin@example.com)"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

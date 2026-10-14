@@ -1,0 +1,29 @@
+{
+  "name": "Bing新闻",
+  "description": "Bing 新闻搜索（infinitescrollajax 接口）",
+  "enabled": true,
+  "url_base": "https://global.bing.com",
+  "tags": ["news"],
+  "request": {
+    "url": "https://global.bing.com/news/infinitescrollajax",
+    "method": "GET",
+    "params": [
+      { "key": "q", "value": "{query}" },
+      { "key": "InfiniteScroll", "value": "1" },
+      { "key": "first", "value": "1" },
+      { "key": "SFX", "value": "0" },
+      { "key": "form", "value": "PTFTNR" },
+      { "key": "mkt", "value": "en-hk" }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      },
+      { "key": "Accept-Language", "value": "en-HK,en;q=0.9" }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

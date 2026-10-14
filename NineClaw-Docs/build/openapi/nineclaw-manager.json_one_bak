@@ -1,0 +1,2686 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Nineclaw Manager",
+        "description": "Multi-tenant container management backend platform",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/v1/container/nineclaw": {
+            "post": {
+                "tags": [
+                    "nineclaw"
+                ],
+                "summary": "Create a new nineclaw instance",
+                "description": "Create a new nineclaw container instance.",
+                "operationId": "create_instance_v1_container_nineclaw_post",
+                "parameters": [
+                    {
+                        "name": "X-Tenant-ID",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "X-Tenant-Id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InstanceCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/app__api__routes__instances__ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AgentEditRequest": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    },
+                    "html": {
+                        "type": "string",
+                        "title": "Html"
+                    },
+                    "instruction": {
+                        "type": "string",
+                        "title": "Instruction"
+                    },
+                    "provider_id": {
+                        "type": "string",
+                        "title": "Provider Id"
+                    },
+                    "model": {
+                        "type": "string",
+                        "title": "Model"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code",
+                    "html",
+                    "instruction",
+                    "provider_id",
+                    "model"
+                ],
+                "title": "AgentEditRequest"
+            },
+            "AggregateSearchRequest": {
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "title": "Query"
+                    },
+                    "include_sources": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Include Sources"
+                    },
+                    "exclude_sources": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Exclude Sources",
+                        "default": []
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query"
+                ],
+                "title": "AggregateSearchRequest"
+            },
+            "AggregateSearchResponse": {
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "title": "Query"
+                    },
+                    "sources": {
+                        "items": {
+                            "$ref": "#/components/schemas/AggregateSearchResult"
+                        },
+                        "type": "array",
+                        "title": "Sources"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query",
+                    "sources"
+                ],
+                "title": "AggregateSearchResponse"
+            },
+            "AggregateSearchResult": {
+                "properties": {
+                    "source_id": {
+                        "type": "string",
+                        "title": "Source Id"
+                    },
+                    "source_name": {
+                        "type": "string",
+                        "title": "Source Name"
+                    },
+                    "results": {
+                        "items": {
+                            "additionalProperties": true,
+                            "type": "object"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    },
+                    "error": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "source_id",
+                    "source_name",
+                    "results"
+                ],
+                "title": "AggregateSearchResult"
+            },
+            "AiExtractorRequest": {
+                "properties": {
+                    "html": {
+                        "type": "string",
+                        "title": "Html"
+                    },
+                    "provider_id": {
+                        "type": "string",
+                        "title": "Provider Id"
+                    },
+                    "model": {
+                        "type": "string",
+                        "title": "Model"
+                    },
+                    "prompt": {
+                        "type": "string",
+                        "title": "Prompt",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "html",
+                    "provider_id",
+                    "model"
+                ],
+                "title": "AiExtractorRequest"
+            },
+            "AiExtractorResponse": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code"
+                ],
+                "title": "AiExtractorResponse"
+            },
+            "Body_preview_skills_zip_v1_skills_preview_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_preview_skills_zip_v1_skills_preview_post"
+            },
+            "Body_upload_file_v1_knowledge__kb_id__files_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_file_v1_knowledge__kb_id__files_post"
+            },
+            "Body_upload_skill_v1_skills_upload_post": {
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "format": "binary",
+                        "title": "File",
+                        "description": "Zip archive containing the skill folder."
+                    },
+                    "overwrite": {
+                        "type": "boolean",
+                        "title": "Overwrite",
+                        "description": "If true, replace an existing skill with the same slug.",
+                        "default": false
+                    },
+                    "slug": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Slug",
+                        "description": "Optional override slug. When omitted the slug is taken from the zip's top-level directory or from frontmatter `name`."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "file"
+                ],
+                "title": "Body_upload_skill_v1_skills_upload_post"
+            },
+            "CreateKnowledgeRequest": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "title": "Name"
+                    },
+                    "avatar": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Avatar"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "embedding_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Embedding Model"
+                    },
+                    "permission": {
+                        "type": "string",
+                        "enum": [
+                            "me",
+                            "team"
+                        ],
+                        "title": "Permission",
+                        "default": "me"
+                    },
+                    "chunk_method": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "naive",
+                                    "book",
+                                    "email",
+                                    "laws",
+                                    "manual",
+                                    "one",
+                                    "paper",
+                                    "picture",
+                                    "presentation",
+                                    "qa",
+                                    "table",
+                                    "tag"
+                                ]
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Chunk Method",
+                        "default": "naive"
+                    },
+                    "parser_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Parser Config"
+                    },
+                    "parse_type": {
+                        "anyOf": [
+                            {
+                                "type": "integer"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Parse Type"
+                    },
+                    "pipeline_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Pipeline Id"
+                    },
+                    "group": {
+                        "type": "string",
+                        "title": "Group",
+                        "default": ""
+                    },
+                    "owner": {
+                        "type": "string",
+                        "title": "Owner",
+                        "default": ""
+                    },
+                    "serial": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Serial"
+                    },
+                    "id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Id",
+                        "description": "Optional slug; derived from name when omitted."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "title": "CreateKnowledgeRequest",
+                "description": "Body for ``POST /v1/knowledge`` — all fields stored locally on disk."
+            },
+            "DeleteInstancesRequest": {
+                "properties": {
+                    "ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Ids",
+                        "description": "Instance IDs to delete"
+                    },
+                    "delete_all": {
+                        "type": "boolean",
+                        "title": "Delete All",
+                        "description": "Delete all instances if ids is empty",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "title": "DeleteInstancesRequest",
+                "description": "Request body for batch delete instances."
+            },
+            "DeployAuxModel": {
+                "properties": {
+                    "task": {
+                        "type": "string",
+                        "maxLength": 64,
+                        "minLength": 1,
+                        "title": "Task"
+                    },
+                    "provider": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "title": "Provider"
+                    },
+                    "model": {
+                        "type": "string",
+                        "maxLength": 256,
+                        "title": "Model"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "task",
+                    "provider",
+                    "model"
+                ],
+                "title": "DeployAuxModel",
+                "description": "An auxiliary task assignment to push via ``/api/model/set``.\n\n``task`` is one of hermes' auxiliary task names (``vision``,\n``web_extract``, ``compression`` etc). The deploy step calls\n``set_model_assignment(scope=\"auxiliary\", task=task, provider, model)``\nonce per entry. Tasks the user leaves at \"跟随主模型\" are simply\nomitted from this list so hermes' existing assignment is left alone."
+            },
+            "DeployMainModel": {
+                "properties": {
+                    "provider": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "title": "Provider"
+                    },
+                    "model": {
+                        "type": "string",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "title": "Model"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "provider",
+                    "model"
+                ],
+                "title": "DeployMainModel",
+                "description": "The main model selection for ``POST /providers/deploy``.\n\n``provider`` matches the ``name`` we will write into the new\n``custom_providers[].name`` entries — i.e. the NineClaw-WebUI\nProvider.name. ``model`` is the model id (one of that provider's\nmodels). The wizard's step 3 picker is constrained to (provider, model)\npairs drawn from the providers selected in step 1."
+            },
+            "DeployRequest": {
+                "properties": {
+                    "provider_ids": {
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Provider Ids"
+                    },
+                    "instance_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Instance Ids"
+                    },
+                    "main_model": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/DeployMainModel"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "description": "Main model to write into config.model. Optional: when null the deployment only refreshes custom_providers and leaves the instance's existing main model selection alone."
+                    },
+                    "auxiliary_models": {
+                        "items": {
+                            "$ref": "#/components/schemas/DeployAuxModel"
+                        },
+                        "type": "array",
+                        "title": "Auxiliary Models",
+                        "description": "Optional auxiliary task assignments. Each entry triggers one /api/model/set call with scope='auxiliary'. Empty list keeps hermes' existing assignments untouched."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "provider_ids",
+                    "instance_ids"
+                ],
+                "title": "DeployRequest",
+                "description": "Body for ``POST /providers/deploy``."
+            },
+            "DeploySkillsRequest": {
+                "properties": {
+                    "skill_slugs": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Skill Slugs"
+                    },
+                    "instance_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Instance Ids"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "skill_slugs",
+                    "instance_ids"
+                ],
+                "title": "DeploySkillsRequest"
+            },
+            "FetchModelsRequest": {
+                "properties": {
+                    "base_url": {
+                        "type": "string",
+                        "maxLength": 512,
+                        "minLength": 1,
+                        "title": "Base Url"
+                    },
+                    "api_key": {
+                        "type": "string",
+                        "maxLength": 1024,
+                        "title": "Api Key",
+                        "default": ""
+                    },
+                    "provider_id": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "base_url"
+                ],
+                "title": "FetchModelsRequest",
+                "description": "Body for ``POST /providers/fetch-models``.\n\nEither ``api_key`` or ``provider_id`` must resolve to a usable secret.\nEmpty ``api_key`` plus a ``provider_id`` belonging to the caller's\ntenant means \"use the stored key for that provider\"."
+            },
+            "FormatCodeRequest": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code"
+                ],
+                "title": "FormatCodeRequest"
+            },
+            "FormatCodeResponse": {
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "code"
+                ],
+                "title": "FormatCodeResponse"
+            },
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "ImportRequest": {
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 8,
+                        "title": "Session Id"
+                    },
+                    "overwrite": {
+                        "type": "boolean",
+                        "title": "Overwrite",
+                        "description": "Apply to every skill in the batch.",
+                        "default": false
+                    },
+                    "slugs": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Slugs",
+                        "description": "Optional subset of slugs to import. When null all detected skills with no validation error are imported."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_id"
+                ],
+                "title": "ImportRequest"
+            },
+            "InstanceCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "title": "Name",
+                        "description": "Human-readable instance name"
+                    },
+                    "environment": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Environment",
+                        "description": "Extra environment variables to merge with defaults"
+                    },
+                    "volumes": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Volumes",
+                        "description": "Extra volume binds in host:container format"
+                    },
+                    "memory": {
+                        "type": "string",
+                        "title": "Memory",
+                        "description": "Memory limit (e.g., '4G', '512M')"
+                    },
+                    "cpus": {
+                        "type": "number",
+                        "maximum": 64,
+                        "minimum": 0.1,
+                        "title": "Cpus",
+                        "description": "CPU limit (e.g., 2.0 for 2 CPUs)"
+                    },
+                    "config": {
+                        "additionalProperties": true,
+                        "type": "object",
+                        "title": "Config",
+                        "description": "Hermes dashboard config overrides (flat dot-notation, e.g. {'model': 'anthropic/claude-sonnet-4-5', 'agent.max_turns': 50}). Merged on top of NINECLAW_DEFAULT_CONFIG and pushed via PUT /api/config after the container starts."
+                    },
+                    "env": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Env",
+                        "description": "Per-instance Hermes env vars (e.g. provider API keys). Merged on top of NINECLAW_DEFAULT_ENV and pushed via PUT /api/env after the container starts."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "title": "InstanceCreate",
+                "description": "Request body for creating a new nineclaw instance."
+            },
+            "KnowledgeBackendIn": {
+                "properties": {
+                    "backend": {
+                        "type": "string",
+                        "title": "Backend"
+                    },
+                    "base_url": {
+                        "type": "string",
+                        "title": "Base Url"
+                    },
+                    "api_key": {
+                        "type": "string",
+                        "title": "Api Key",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "backend",
+                    "base_url"
+                ],
+                "title": "KnowledgeBackendIn"
+            },
+            "KnowledgeBackendTestIn": {
+                "properties": {
+                    "base_url": {
+                        "type": "string",
+                        "title": "Base Url"
+                    },
+                    "api_key": {
+                        "type": "string",
+                        "title": "Api Key",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "base_url"
+                ],
+                "title": "KnowledgeBackendTestIn"
+            },
+            "KnowledgeDeployRequest": {
+                "properties": {
+                    "knowledge_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Knowledge Ids",
+                        "description": "要部署的知识库 ID 列表"
+                    },
+                    "instance_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Instance Ids",
+                        "description": "目标 NineClaw 实例 ID 列表"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "knowledge_ids",
+                    "instance_ids"
+                ],
+                "title": "KnowledgeDeployRequest",
+                "description": "Body for ``POST /v1/knowledge/deploy`` — push knowledge config to instances via SSE."
+            },
+            "KnowledgeQARequest": {
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Question"
+                    },
+                    "dataset_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Dataset Ids",
+                        "description": "知识库 ID 列表，对应 /v1/knowledge 下的 id"
+                    },
+                    "top_k": {
+                        "type": "integer",
+                        "maximum": 50,
+                        "minimum": 1,
+                        "title": "Top K",
+                        "default": 5
+                    },
+                    "provider_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Id",
+                        "description": "LLM Provider ID；省略则自动选用已启用的 Provider"
+                    },
+                    "model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Model",
+                        "description": "模型 ID；省略则使用该 Provider 的第一个模型"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "question",
+                    "dataset_ids"
+                ],
+                "title": "KnowledgeQARequest",
+                "description": "知识问答（SSE）请求体，dataset_ids 即知识库 ID 列表。"
+            },
+            "McpDeployRequest": {
+                "properties": {
+                    "mcp_ids": {
+                        "items": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Mcp Ids"
+                    },
+                    "instance_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Instance Ids"
+                    },
+                    "tools_config": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/McpToolConfig"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Tools Config"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "mcp_ids",
+                    "instance_ids"
+                ],
+                "title": "McpDeployRequest",
+                "description": "Body for ``POST /mcps/deploy``."
+            },
+            "McpServerCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "maxLength": 1024,
+                        "title": "Description",
+                        "default": ""
+                    },
+                    "transport": {
+                        "type": "string",
+                        "pattern": "^(stdio|url)$",
+                        "title": "Transport"
+                    },
+                    "command": {
+                        "type": "string",
+                        "maxLength": 512,
+                        "title": "Command",
+                        "default": ""
+                    },
+                    "args": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Args"
+                    },
+                    "env": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Env"
+                    },
+                    "url": {
+                        "type": "string",
+                        "maxLength": 512,
+                        "title": "Url",
+                        "default": ""
+                    },
+                    "headers": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Headers"
+                    },
+                    "timeout": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Timeout"
+                    },
+                    "connect_timeout": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Connect Timeout"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "title": "Enabled",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "transport"
+                ],
+                "title": "McpServerCreate",
+                "description": "Body for ``POST /mcps``."
+            },
+            "McpServerUpdate": {
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 128,
+                                "minLength": 1
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 1024
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "transport": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "pattern": "^(stdio|url)$"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Transport"
+                    },
+                    "command": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 512
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Command"
+                    },
+                    "args": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Args"
+                    },
+                    "env": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Env"
+                    },
+                    "url": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 512
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Url"
+                    },
+                    "headers": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Headers"
+                    },
+                    "timeout": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Timeout"
+                    },
+                    "connect_timeout": {
+                        "anyOf": [
+                            {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Connect Timeout"
+                    },
+                    "enabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Enabled"
+                    }
+                },
+                "type": "object",
+                "title": "McpServerUpdate",
+                "description": "Body for ``PUT /mcps/{id}``. All fields are optional."
+            },
+            "McpToolConfig": {
+                "properties": {
+                    "mcp_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Mcp Id"
+                    },
+                    "enabled_tools": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Enabled Tools"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "mcp_id",
+                    "enabled_tools"
+                ],
+                "title": "McpToolConfig",
+                "description": "Per-MCP tool override for deploy."
+            },
+            "MetadataCondition": {
+                "properties": {
+                    "logic": {
+                        "type": "string",
+                        "enum": [
+                            "and",
+                            "or"
+                        ],
+                        "title": "Logic",
+                        "default": "and"
+                    },
+                    "conditions": {
+                        "items": {
+                            "$ref": "#/components/schemas/MetadataConditionItem"
+                        },
+                        "type": "array",
+                        "title": "Conditions"
+                    }
+                },
+                "type": "object",
+                "title": "MetadataCondition"
+            },
+            "MetadataConditionItem": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "comparison_operator": {
+                        "type": "string",
+                        "title": "Comparison Operator",
+                        "description": "e.g. \"=\", \"contains\", \"not contains\", \"start with\", \"empty\", \"not empty\""
+                    },
+                    "value": {
+                        "type": "string",
+                        "title": "Value",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "comparison_operator"
+                ],
+                "title": "MetadataConditionItem"
+            },
+            "ParseDocumentsRequest": {
+                "properties": {
+                    "document_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Document Ids",
+                        "description": "要解析的文档 ID 列表（知识库内文件 id）"
+                    }
+                },
+                "type": "object",
+                "title": "ParseDocumentsRequest",
+                "description": "Body for ``POST /v1/datasets/{dataset_id}/chunks``."
+            },
+            "ProviderChatCompletionRequest": {
+                "properties": {
+                    "provider_id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "title": "Provider Id"
+                    },
+                    "model": {
+                        "type": "string",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "title": "Model"
+                    },
+                    "messages": {
+                        "items": {
+                            "$ref": "#/components/schemas/ProviderChatMessage"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Messages"
+                    },
+                    "stream": {
+                        "type": "boolean",
+                        "title": "Stream",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "provider_id",
+                    "model",
+                    "messages"
+                ],
+                "title": "ProviderChatCompletionRequest",
+                "description": "Body for ``POST /providers/chat/completions``."
+            },
+            "ProviderChatMessage": {
+                "properties": {
+                    "role": {
+                        "type": "string",
+                        "maxLength": 32,
+                        "minLength": 1,
+                        "title": "Role"
+                    },
+                    "content": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Content"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "role",
+                    "content"
+                ],
+                "title": "ProviderChatMessage",
+                "description": "Single OpenAI-compatible chat message."
+            },
+            "ProviderCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "maxLength": 1024,
+                        "title": "Description",
+                        "default": ""
+                    },
+                    "base_url": {
+                        "type": "string",
+                        "maxLength": 512,
+                        "minLength": 1,
+                        "title": "Base Url"
+                    },
+                    "api_key": {
+                        "type": "string",
+                        "maxLength": 1024,
+                        "title": "Api Key",
+                        "default": ""
+                    },
+                    "models": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Models"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "title": "Enabled",
+                        "default": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "base_url"
+                ],
+                "title": "ProviderCreate",
+                "description": "Body for ``POST /providers``."
+            },
+            "ProviderUpdate": {
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 128,
+                                "minLength": 1
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 1024
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "base_url": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 512,
+                                "minLength": 1
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Base Url"
+                    },
+                    "api_key": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "maxLength": 1024
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Api Key"
+                    },
+                    "models": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Models"
+                    },
+                    "enabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Enabled"
+                    }
+                },
+                "type": "object",
+                "title": "ProviderUpdate",
+                "description": "Body for ``PUT /providers/{id}``. All fields are optional.\n\nA missing or ``None`` ``api_key`` leaves the stored secret untouched. An\nexplicit empty string clears it."
+            },
+            "ProxyRequest": {
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "pattern": "^(GET|POST)$",
+                        "title": "Method",
+                        "default": "GET"
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "params": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Params"
+                    },
+                    "headers": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Headers"
+                    },
+                    "body": {
+                        "type": "string",
+                        "title": "Body",
+                        "default": ""
+                    },
+                    "use_proxy": {
+                        "type": "boolean",
+                        "title": "Use Proxy",
+                        "default": false
+                    },
+                    "proxy_url": {
+                        "type": "string",
+                        "title": "Proxy Url",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "url"
+                ],
+                "title": "ProxyRequest"
+            },
+            "ProxyResponse": {
+                "properties": {
+                    "status_code": {
+                        "type": "integer",
+                        "title": "Status Code"
+                    },
+                    "headers": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object",
+                        "title": "Headers"
+                    },
+                    "body": {
+                        "type": "string",
+                        "title": "Body"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "status_code",
+                    "headers",
+                    "body"
+                ],
+                "title": "ProxyResponse"
+            },
+            "QaRequest": {
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Question"
+                    },
+                    "model_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Model Id"
+                    },
+                    "top_k": {
+                        "type": "integer",
+                        "maximum": 50,
+                        "minimum": 1,
+                        "title": "Top K",
+                        "default": 5
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "question"
+                ],
+                "title": "QaRequest"
+            },
+            "RecallRequest": {
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Query"
+                    },
+                    "similarity": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Similarity",
+                        "default": 0.34
+                    },
+                    "vector_weight": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Vector Weight",
+                        "default": 0.3
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "query"
+                ],
+                "title": "RecallRequest"
+            },
+            "RemoteDockerIn": {
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "title": "Enabled",
+                        "default": false
+                    },
+                    "ssh_host": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "title": "Ssh Host",
+                        "default": ""
+                    },
+                    "ssh_port": {
+                        "type": "integer",
+                        "maximum": 65535,
+                        "minimum": 1,
+                        "title": "Ssh Port",
+                        "default": 22
+                    },
+                    "ssh_username": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "title": "Ssh Username",
+                        "default": ""
+                    },
+                    "ssh_password": {
+                        "type": "string",
+                        "maxLength": 1024,
+                        "title": "Ssh Password",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "RemoteDockerIn"
+            },
+            "RemoteDockerTestIn": {
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "title": "Enabled",
+                        "default": false
+                    },
+                    "ssh_host": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "title": "Ssh Host",
+                        "default": ""
+                    },
+                    "ssh_port": {
+                        "type": "integer",
+                        "maximum": 65535,
+                        "minimum": 1,
+                        "title": "Ssh Port",
+                        "default": 22
+                    },
+                    "ssh_username": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "title": "Ssh Username",
+                        "default": ""
+                    },
+                    "ssh_password": {
+                        "type": "string",
+                        "maxLength": 1024,
+                        "title": "Ssh Password",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "title": "RemoteDockerTestIn"
+            },
+            "RetrievalKbRequest": {
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Question"
+                    },
+                    "document_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Document Ids"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "title": "Page",
+                        "default": 1
+                    },
+                    "page_size": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1,
+                        "title": "Page Size",
+                        "default": 30
+                    },
+                    "similarity_threshold": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Similarity Threshold",
+                        "default": 0.2
+                    },
+                    "vector_similarity_weight": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Vector Similarity Weight",
+                        "default": 0.3
+                    },
+                    "top_k": {
+                        "type": "integer",
+                        "maximum": 10000,
+                        "minimum": 1,
+                        "title": "Top K",
+                        "default": 1024
+                    },
+                    "rerank_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Rerank Id"
+                    },
+                    "keyword": {
+                        "type": "boolean",
+                        "title": "Keyword",
+                        "default": false
+                    },
+                    "highlight": {
+                        "type": "boolean",
+                        "title": "Highlight",
+                        "default": false
+                    },
+                    "cross_languages": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cross Languages"
+                    },
+                    "metadata_condition": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MetadataCondition"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "use_kg": {
+                        "type": "boolean",
+                        "title": "Use Kg",
+                        "default": false
+                    },
+                    "toc_enhance": {
+                        "type": "boolean",
+                        "title": "Toc Enhance",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "question"
+                ],
+                "title": "RetrievalKbRequest",
+                "description": "``POST /v1/knowledge/{kb_id}/retrieval`` — dataset_ids 由路径注入。"
+            },
+            "RetrievalRequest": {
+                "properties": {
+                    "question": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Question",
+                        "description": "用户查询或关键词"
+                    },
+                    "dataset_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Dataset Ids",
+                        "description": "知识库 ID 列表（对应 RAGFlow dataset_ids）"
+                    },
+                    "document_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Document Ids",
+                        "description": "文档 ID 列表（对应知识库内文件 id）"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "title": "Page",
+                        "description": "结果页码",
+                        "default": 1
+                    },
+                    "page_size": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1,
+                        "title": "Page Size",
+                        "description": "每页 chunk 数",
+                        "default": 30
+                    },
+                    "similarity_threshold": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Similarity Threshold",
+                        "description": "最低相似度阈值",
+                        "default": 0.2
+                    },
+                    "vector_similarity_weight": {
+                        "type": "number",
+                        "maximum": 1,
+                        "minimum": 0,
+                        "title": "Vector Similarity Weight",
+                        "description": "向量相似度权重",
+                        "default": 0.3
+                    },
+                    "top_k": {
+                        "type": "integer",
+                        "maximum": 10000,
+                        "minimum": 1,
+                        "title": "Top K",
+                        "description": "参与相似度计算的 chunk 上限",
+                        "default": 1024
+                    },
+                    "rerank_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Rerank Id"
+                    },
+                    "keyword": {
+                        "type": "boolean",
+                        "title": "Keyword",
+                        "description": "是否启用关键词匹配",
+                        "default": false
+                    },
+                    "highlight": {
+                        "type": "boolean",
+                        "title": "Highlight",
+                        "description": "是否高亮匹配词",
+                        "default": false
+                    },
+                    "cross_languages": {
+                        "anyOf": [
+                            {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Cross Languages"
+                    },
+                    "metadata_condition": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/components/schemas/MetadataCondition"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "use_kg": {
+                        "type": "boolean",
+                        "title": "Use Kg",
+                        "default": false
+                    },
+                    "toc_enhance": {
+                        "type": "boolean",
+                        "title": "Toc Enhance",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "question"
+                ],
+                "title": "RetrievalRequest",
+                "description": "Body for ``POST /v1/knowledge/retrieval`` (RAGFlow-compatible)."
+            },
+            "RunExtractorRequest": {
+                "properties": {
+                    "html": {
+                        "type": "string",
+                        "title": "Html"
+                    },
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "html",
+                    "code"
+                ],
+                "title": "RunExtractorRequest"
+            },
+            "SkillCreateRequest": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Name",
+                        "description": "Human-readable skill name."
+                    },
+                    "description": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Description",
+                        "description": "Short skill summary."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "description"
+                ],
+                "title": "SkillCreateRequest",
+                "description": "Body for ``POST /skills`` — create an empty skill folder on disk."
+            },
+            "SkillStudioChatRequest": {
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "title": "Session Id"
+                    },
+                    "message": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Message"
+                    },
+                    "category": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Category"
+                    },
+                    "resume_run_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Resume Run Id"
+                    },
+                    "provider_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Id",
+                        "description": "Optional LLM provider id from model management."
+                    },
+                    "model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Model",
+                        "description": "Optional model name; must belong to provider_id when set."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_id"
+                ],
+                "title": "SkillStudioChatRequest"
+            },
+            "SkillStudioCreateSessionRequest": {
+                "properties": {
+                    "category": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Category"
+                    }
+                },
+                "type": "object",
+                "title": "SkillStudioCreateSessionRequest"
+            },
+            "SkillStudioPauseRequest": {
+                "properties": {
+                    "run_id": {
+                        "type": "string",
+                        "title": "Run Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "run_id"
+                ],
+                "title": "SkillStudioPauseRequest"
+            },
+            "SkillStudioQaRequest": {
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "title": "Session Id"
+                    },
+                    "message": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Message"
+                    },
+                    "resume_run_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Resume Run Id"
+                    },
+                    "provider_id": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Provider Id",
+                        "description": "Optional LLM provider id from model management."
+                    },
+                    "model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Model",
+                        "description": "Optional model name; must belong to provider_id when set."
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_id"
+                ],
+                "title": "SkillStudioQaRequest"
+            },
+            "SkillStudioSaveFileRequest": {
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Path"
+                    },
+                    "content": {
+                        "type": "string",
+                        "title": "Content",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "path"
+                ],
+                "title": "SkillStudioSaveFileRequest"
+            },
+            "SwitchKnowledgeChunksRequest": {
+                "properties": {
+                    "chunk_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "minItems": 1,
+                        "title": "Chunk Ids",
+                        "description": "要切换状态的切片 ID 列表"
+                    },
+                    "available": {
+                        "type": "boolean",
+                        "title": "Available",
+                        "description": "true=批量启用，false=批量停用"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "chunk_ids",
+                    "available"
+                ],
+                "title": "SwitchKnowledgeChunksRequest"
+            },
+            "ToolStateUpdate": {
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "title": "Enabled"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "enabled"
+                ],
+                "title": "ToolStateUpdate",
+                "description": "Body for ``PUT /mcps/{mcp_id}/tools/{tool_name}``."
+            },
+            "UpdateKnowledgeChunkRequest": {
+                "properties": {
+                    "available": {
+                        "type": "boolean",
+                        "title": "Available",
+                        "description": "true=启用参与检索，false=停用"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "available"
+                ],
+                "title": "UpdateKnowledgeChunkRequest"
+            },
+            "UpdateKnowledgeRequest": {
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "group": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Group"
+                    },
+                    "owner": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Owner"
+                    },
+                    "serial": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Serial"
+                    },
+                    "status": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "indexing",
+                                    "ready",
+                                    "failed"
+                                ]
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Status"
+                    },
+                    "avatar": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Avatar"
+                    },
+                    "embedding_model": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Embedding Model"
+                    },
+                    "chunk_method": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Chunk Method"
+                    },
+                    "permission": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Permission"
+                    },
+                    "parser_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Parser Config"
+                    }
+                },
+                "type": "object",
+                "title": "UpdateKnowledgeRequest"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "title": "ValidationError"
+            },
+            "WebSearchDeployRequest": {
+                "properties": {
+                    "source_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Source Ids"
+                    },
+                    "instance_ids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Instance Ids"
+                    }
+                },
+                "type": "object",
+                "title": "WebSearchDeployRequest"
+            },
+            "WebSourceCreate": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "default": ""
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Type",
+                        "default": "other"
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "default": ""
+                    },
+                    "url_base": {
+                        "type": "string",
+                        "title": "Url Base",
+                        "default": ""
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "title": "WebSourceCreate"
+            },
+            "WebSourceOut": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Type"
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url"
+                    },
+                    "url_base": {
+                        "type": "string",
+                        "title": "Url Base"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "title": "Enabled"
+                    },
+                    "is_verified": {
+                        "type": "boolean",
+                        "title": "Is Verified"
+                    },
+                    "request_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Request Config"
+                    },
+                    "extractor_code": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Extractor Code"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "title": "Created At"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "title": "Updated At"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "url",
+                    "url_base",
+                    "enabled",
+                    "is_verified",
+                    "request_config",
+                    "extractor_code",
+                    "created_at",
+                    "updated_at"
+                ],
+                "title": "WebSourceOut"
+            },
+            "WebSourceUpdate": {
+                "properties": {
+                    "name": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Name"
+                    },
+                    "description": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Description"
+                    },
+                    "type": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Type"
+                    },
+                    "url": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Url"
+                    },
+                    "url_base": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Url Base"
+                    },
+                    "enabled": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Enabled"
+                    },
+                    "request_config": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": true,
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Request Config"
+                    },
+                    "extractor_code": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Extractor Code"
+                    },
+                    "is_verified": {
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Is Verified"
+                    }
+                },
+                "type": "object",
+                "title": "WebSourceUpdate"
+            },
+            "app__api__routes__instances__ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "description": "Response code, 0 means success",
+                        "default": 0
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "description": "Response message",
+                        "default": "success"
+                    },
+                    "data": {
+                        "title": "Data",
+                        "description": "Response data"
+                    }
+                },
+                "type": "object",
+                "title": "ApiResponse",
+                "description": "Standard API response wrapper."
+            },
+            "app__api__routes__knowledge__ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 0
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "default": "success"
+                    },
+                    "data": {
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "title": "ApiResponse"
+            },
+            "app__api__routes__mcp_servers__ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 0
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "default": "success"
+                    },
+                    "data": {
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "title": "ApiResponse"
+            },
+            "app__api__routes__providers__ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 0
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "default": "success"
+                    },
+                    "data": {
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "title": "ApiResponse",
+                "description": "Standard envelope used across the manager API."
+            },
+            "app__api__routes__retrieval__ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 0
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "default": "success"
+                    },
+                    "data": {
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "title": "ApiResponse"
+            },
+            "app__api__routes__skills__ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "title": "Code",
+                        "default": 0
+                    },
+                    "message": {
+                        "type": "string",
+                        "title": "Message",
+                        "default": "success"
+                    },
+                    "data": {
+                        "title": "Data"
+                    }
+                },
+                "type": "object",
+                "title": "ApiResponse",
+                "description": "Standard envelope used across the manager API."
+            }
+        }
+    }
+}

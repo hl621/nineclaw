@@ -1,0 +1,24 @@
+{
+  "name": "Dogpile",
+  "description": "Dogpile metasearch engine",
+  "enabled": true,
+  "url_base": "https://www.dogpile.com",
+  "request": {
+    "url": "https://www.dogpile.com/api/search",
+    "method": "POST",
+    "params": [],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      },
+      {
+        "key": "Content-Type",
+        "value": "application/json"
+      }
+    ],
+    "body": "{\"q\": \"{query}\", \"qadf\": \"none\", \"page\": 1}",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

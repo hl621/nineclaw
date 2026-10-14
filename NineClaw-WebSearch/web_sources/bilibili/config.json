@@ -1,0 +1,41 @@
+{
+  "name": "哔哩哔哩",
+  "description": "B 站视频搜索 JSON API，返回视频结果",
+  "enabled": true,
+  "url_base": "https://www.bilibili.com",
+  "request": {
+    "url": "https://api.bilibili.com/x/web-interface/search/type",
+    "method": "GET",
+    "params": [
+      {
+        "key": "keyword",
+        "value": "{query}"
+      },
+      {
+        "key": "search_type",
+        "value": "video"
+      },
+      {
+        "key": "page",
+        "value": "1"
+      },
+      {
+        "key": "page_size",
+        "value": "20"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      },
+      {
+        "key": "Referer",
+        "value": "https://www.bilibili.com/"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

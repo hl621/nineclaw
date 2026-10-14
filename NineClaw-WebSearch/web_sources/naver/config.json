@@ -1,0 +1,29 @@
+{
+  "name": "Naver搜索",
+  "description": "Naver web search",
+  "enabled": true,
+  "url_base": "https://www.naver.com",
+  "request": {
+    "url": "https://search.naver.com/search.naver",
+    "method": "GET",
+    "params": [
+      {
+        "key": "query",
+        "value": "{query}"
+      },
+      {
+        "key": "where",
+        "value": "web"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw 系统依赖关系图</title>
+  <desc id="desc">Diagram showing core NineClaw services, shared dependencies, and blast radius when dependencies fail.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#fff;stroke:#d8e2ec;stroke-width:1.8}
+      .svc{fill:#eff6ff;stroke:#2563eb;stroke-width:1.8}
+      .dep{fill:#f8fafc;stroke:#64748b;stroke-width:1.8}
+      .impact{fill:#fff7ed;stroke:#ea580c;stroke-width:1.8}
+      .note{fill:#f0fdf4;stroke:#16a34a;stroke-width:1.8}
+      .text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}
+      .title{font-size:25px;font-weight:800}
+      .sub{font-size:14px;fill:#475569}
+      .head{font-size:16px;font-weight:800;fill:#334155}
+      .label{font-size:15px;font-weight:800}
+      .small{font-size:12.5px;fill:#475569}
+      .mono{font-family:SFMono-Regular,Consolas,Menlo,monospace;font-size:11.5px;fill:#334155}
+      .line{stroke:#2563eb;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:5 5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+
+  <rect class="bg" width="1120" height="720" rx="22"/>
+  <text class="text title" x="42" y="44">NineClaw 系统依赖关系</text>
+  <text class="text sub" x="42" y="68">这张图关注“依赖关系”和“影响面”，不是一次业务请求的调用顺序。</text>
+
+  <rect class="panel" x="40" y="102" width="240" height="548" rx="16"/>
+  <rect class="panel" x="316" y="102" width="396" height="548" rx="16"/>
+  <rect class="panel" x="748" y="102" width="330" height="548" rx="16"/>
+  <text class="text head" x="160" y="132" text-anchor="middle">业务服务</text>
+  <text class="text head" x="514" y="132" text-anchor="middle">共享依赖</text>
+  <text class="text head" x="913" y="132" text-anchor="middle">故障影响面</text>
+
+  <rect class="svc" x="76" y="166" width="168" height="58" rx="10"/>
+  <text class="text label" x="160" y="189" text-anchor="middle">Traefik</text>
+  <text class="text small" x="160" y="207" text-anchor="middle">统一入口 / 服务发现</text>
+
+  <rect class="svc" x="76" y="250" width="168" height="58" rx="10"/>
+  <text class="text label" x="160" y="273" text-anchor="middle">Manager</text>
+  <text class="text small" x="160" y="291" text-anchor="middle">实例 / 配置 / 部署</text>
+
+  <rect class="svc" x="76" y="334" width="168" height="58" rx="10"/>
+  <text class="text label" x="160" y="357" text-anchor="middle">WebSearch</text>
+  <text class="text small" x="160" y="375" text-anchor="middle">信源 / 聚合搜索</text>
+
+  <rect class="svc" x="76" y="418" width="168" height="58" rx="10"/>
+  <text class="text label" x="160" y="441" text-anchor="middle">WebUI / Docs</text>
+  <text class="text small" x="160" y="459" text-anchor="middle">页面与文档入口</text>
+
+  <rect class="svc" x="76" y="502" width="168" height="58" rx="10"/>
+  <text class="text label" x="160" y="525" text-anchor="middle">Runtime 实例</text>
+  <text class="text small" x="160" y="543" text-anchor="middle">nineclaw-{id}</text>
+
+  <rect class="svc" x="76" y="586" width="168" height="58" rx="10"/>
+  <text class="text label" x="160" y="609" text-anchor="middle">OpenSandbox</text>
+  <text class="text small" x="160" y="627" text-anchor="middle">沙箱调度服务</text>
+
+  <rect class="dep" x="358" y="156" width="278" height="74" rx="12"/>
+  <text class="text label" x="497" y="180" text-anchor="middle">PostgreSQL 容器</text>
+  <text class="text mono" x="497" y="200" text-anchor="middle">postgres:5432 / host:15432</text>
+  <text class="text small" x="497" y="218" text-anchor="middle">包含 nineclaw_manager、nineclaw_websearch 两个库</text>
+
+  <rect class="dep" x="358" y="268" width="278" height="62" rx="12"/>
+  <text class="text label" x="497" y="292" text-anchor="middle">qiyuan_net</text>
+  <text class="text small" x="497" y="312" text-anchor="middle">固定服务与 Runtime 实例所在 Docker 网络</text>
+
+  <rect class="dep" x="358" y="368" width="278" height="62" rx="12"/>
+  <text class="text label" x="497" y="392" text-anchor="middle">Docker Socket</text>
+  <text class="text mono" x="497" y="412" text-anchor="middle">/var/run/docker.sock</text>
+
+  <rect class="dep" x="358" y="468" width="278" height="62" rx="12"/>
+  <text class="text label" x="497" y="492" text-anchor="middle">skills_storage</text>
+  <text class="text small" x="497" y="512" text-anchor="middle">Skill 文件持久化目录</text>
+
+  <rect class="dep" x="358" y="568" width="278" height="62" rx="12"/>
+  <text class="text label" x="497" y="592" text-anchor="middle">OpenSandbox 服务</text>
+  <text class="text mono" x="497" y="612" text-anchor="middle">opensandbox-server:8090 / /sandbox</text>
+
+  <rect class="impact" x="792" y="156" width="244" height="74" rx="12"/>
+  <text class="text label" x="914" y="180" text-anchor="middle">数据状态异常</text>
+  <text class="text small" x="914" y="200" text-anchor="middle">实例、Provider、MCP、RAG 配置</text>
+  <text class="text small" x="914" y="218" text-anchor="middle">信源、搜索任务、抽取结果</text>
+
+  <rect class="impact" x="792" y="268" width="244" height="62" rx="12"/>
+  <text class="text label" x="914" y="292" text-anchor="middle">访问与路由异常</text>
+  <text class="text small" x="914" y="312" text-anchor="middle">WebUI、Docs、Manager、Runtime 路由受影响</text>
+
+  <rect class="impact" x="792" y="368" width="244" height="62" rx="12"/>
+  <text class="text label" x="914" y="392" text-anchor="middle">容器编排异常</text>
+  <text class="text small" x="914" y="412" text-anchor="middle">实例创建、Traefik 发现、沙箱执行受影响</text>
+
+  <rect class="impact" x="792" y="468" width="244" height="62" rx="12"/>
+  <text class="text label" x="914" y="492" text-anchor="middle">Skill 丢失或不可部署</text>
+  <text class="text small" x="914" y="512" text-anchor="middle">上传、编辑、部署 Skill 受影响</text>
+
+  <rect class="impact" x="792" y="568" width="244" height="62" rx="12"/>
+  <text class="text label" x="914" y="592" text-anchor="middle">沙箱能力不可用</text>
+  <text class="text small" x="914" y="612" text-anchor="middle">离线依赖代码执行、抽取调试受影响</text>
+
+  <path class="line" d="M244 195 C302 195 306 193 358 193"/>
+  <path class="line" d="M244 195 C300 205 308 296 358 299"/>
+  <path class="line" d="M244 195 C296 210 310 395 358 399"/>
+
+  <path class="line" d="M244 279 C296 240 310 194 358 193"/>
+  <path class="line" d="M244 279 C300 279 308 299 358 299"/>
+  <path class="line" d="M244 279 C300 326 308 399 358 399"/>
+  <path class="line" d="M244 279 C300 360 308 499 358 499"/>
+  <path class="line" d="M244 279 C300 432 308 599 358 599"/>
+
+  <path class="line" d="M244 363 C300 310 308 196 358 193"/>
+  <path class="line" d="M244 363 C300 350 308 299 358 299"/>
+
+  <path class="line" d="M244 447 C300 420 308 300 358 299"/>
+  <path class="line" d="M244 531 C300 500 308 300 358 299"/>
+  <path class="line" d="M244 615 C300 560 308 400 358 399"/>
+  <path class="line" d="M244 615 C300 600 308 599 358 599"/>
+
+  <path class="dash" d="M636 193 H792"/>
+  <path class="dash" d="M636 299 H792"/>
+  <path class="dash" d="M636 399 H792"/>
+  <path class="dash" d="M636 499 H792"/>
+  <path class="dash" d="M636 599 H792"/>
+
+  <rect class="note" x="350" y="656" width="438" height="34" rx="9"/>
+  <text class="text small" x="569" y="678" text-anchor="middle">QY-RAG 是独立外部服务，和本图中的系统基础依赖分开排查。</text>
+</svg>

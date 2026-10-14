@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="640" viewBox="0 0 760 640" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw Manager 创建 Runtime 泳道流程</title>
+  <desc id="desc">Manager 创建 Runtime 实例时涉及 WebUI、数据库、Docker、Traefik 和 Runtime。</desc>
+  <defs>
+    <marker id="arrow-manager" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#2563eb"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.lane{fill:#fff;stroke:#d7dee8;stroke-width:1.5}.head{fill:#eef2ff}.head2{fill:#ecfeff}.head3{fill:#f0fdf4}.head4{fill:#fff7ed}.step{fill:#fff;stroke:#cbd5e1;stroke-width:1.6}.text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.laneText{font-size:14px;font-weight:700}.small{font-size:12.5px;fill:#475569}.label{font-size:13.5px;font-weight:700}.line{stroke:#2563eb;stroke-width:2.3;fill:none;marker-end:url(#arrow-manager)}
+    </style>
+  </defs>
+  <rect class="bg" width="760" height="640" rx="20"/>
+  <text class="text title" x="32" y="38">Manager 创建 Runtime 实例泳道图</text>
+  <text class="text small" x="32" y="62">Manager 同步完成业务状态、容器生命周期和 Traefik 动态路由。</text>
+
+  <rect class="lane" x="26" y="86" width="112" height="510"/><rect class="head" x="26" y="86" width="112" height="38"/><text class="text laneText" x="82" y="110" text-anchor="middle">WebUI</text>
+  <rect class="lane" x="138" y="86" width="132" height="510"/><rect class="head3" x="138" y="86" width="132" height="38"/><text class="text laneText" x="204" y="110" text-anchor="middle">Manager</text>
+  <rect class="lane" x="270" y="86" width="118" height="510"/><rect class="head2" x="270" y="86" width="118" height="38"/><text class="text laneText" x="329" y="110" text-anchor="middle">PostgreSQL</text>
+  <rect class="lane" x="388" y="86" width="126" height="510"/><rect class="head4" x="388" y="86" width="126" height="38"/><text class="text laneText" x="451" y="110" text-anchor="middle">Docker API</text>
+  <rect class="lane" x="514" y="86" width="114" height="510"/><rect class="head" x="514" y="86" width="114" height="38"/><text class="text laneText" x="571" y="110" text-anchor="middle">Traefik</text>
+  <rect class="lane" x="628" y="86" width="106" height="510"/><rect class="head4" x="628" y="86" width="106" height="38"/><text class="text laneText" x="681" y="110" text-anchor="middle">Runtime</text>
+
+  <rect class="step" x="42" y="150" width="80" height="44" rx="8"/><text class="text label" x="82" y="168" text-anchor="middle">创建实例</text><text class="text small" x="82" y="184" text-anchor="middle">提交参数</text>
+  <rect class="step" x="154" y="150" width="100" height="44" rx="8"/><text class="text label" x="204" y="168" text-anchor="middle">校验请求</text><text class="text small" x="204" y="184" text-anchor="middle">准备配置</text>
+  <path class="line" d="M122 172 H154"/>
+
+  <rect class="step" x="154" y="230" width="100" height="48" rx="8"/><text class="text label" x="204" y="249" text-anchor="middle">生成实例</text><text class="text small" x="204" y="266" text-anchor="middle">名称/Token/路由</text>
+  <rect class="step" x="286" y="230" width="86" height="48" rx="8"/><text class="text label" x="329" y="249" text-anchor="middle">写入状态</text><text class="text small" x="329" y="266" text-anchor="middle">creating</text>
+  <path class="line" d="M254 254 H286"/>
+
+  <rect class="step" x="154" y="314" width="100" height="48" rx="8"/><text class="text label" x="204" y="333" text-anchor="middle">构造容器</text><text class="text small" x="204" y="350" text-anchor="middle">env/labels/network</text>
+  <rect class="step" x="404" y="314" width="94" height="48" rx="8"/><text class="text label" x="451" y="333" text-anchor="middle">创建容器</text><text class="text small" x="451" y="350" text-anchor="middle">加入 qiyuan_net</text>
+  <path class="line" d="M254 338 H404"/>
+
+  <rect class="step" x="404" y="400" width="94" height="48" rx="8"/><text class="text label" x="451" y="419" text-anchor="middle">启动容器</text><text class="text small" x="451" y="436" text-anchor="middle">labels 生效</text>
+  <rect class="step" x="530" y="400" width="82" height="48" rx="8"/><text class="text label" x="571" y="419" text-anchor="middle">发现路由</text><text class="text small" x="571" y="436" text-anchor="middle">Docker Provider</text>
+  <rect class="step" x="644" y="400" width="74" height="48" rx="8"/><text class="text label" x="681" y="419" text-anchor="middle">实例可达</text><text class="text small" x="681" y="436" text-anchor="middle">8642/43/44</text>
+  <path class="line" d="M498 424 H530"/><path class="line" d="M612 424 H644"/>
+
+  <rect class="step" x="154" y="506" width="100" height="48" rx="8"/><text class="text label" x="204" y="525" text-anchor="middle">更新状态</text><text class="text small" x="204" y="542" text-anchor="middle">返回访问地址</text>
+  <rect class="step" x="286" y="506" width="86" height="48" rx="8"/><text class="text label" x="329" y="525" text-anchor="middle">写 running</text><text class="text small" x="329" y="542" text-anchor="middle">保存地址</text>
+  <rect class="step" x="42" y="506" width="80" height="48" rx="8"/><text class="text label" x="82" y="525" text-anchor="middle">展示实例</text><text class="text small" x="82" y="542" text-anchor="middle">可进入</text>
+  <path class="line" d="M254 530 H286"/><path class="line" d="M154 530 H122"/>
+</svg>

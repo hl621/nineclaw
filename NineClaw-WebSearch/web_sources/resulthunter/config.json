@@ -1,0 +1,37 @@
+{
+  "name": "ResultHunter",
+  "description": "ResultHunter web search",
+  "enabled": true,
+  "url_base": "https://resulthunter.com",
+  "request": {
+    "url": "https://resulthunter.com/search",
+    "method": "GET",
+    "params": [
+      {
+        "key": "q",
+        "value": "{query}"
+      },
+      {
+        "key": "search_type",
+        "value": "web"
+      },
+      {
+        "key": "offset",
+        "value": "0"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      },
+      {
+        "key": "Cookie",
+        "value": "safesearch=moderate"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

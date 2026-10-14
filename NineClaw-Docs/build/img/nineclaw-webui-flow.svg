@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560" role="img" aria-labelledby="title desc">
+  <title id="title">NineClaw WebUI 泳道流程</title>
+  <desc id="desc">WebUI 访问、实例管理、搜索和 Runtime 访问的跨模块流程。</desc>
+  <defs>
+    <marker id="arrow-webui" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#2563eb"/></marker>
+    <style>
+      .bg{fill:#f8fafc}.lane{fill:#fff;stroke:#d7dee8;stroke-width:1.5}.head{fill:#eef2ff}.head2{fill:#ecfeff}.head3{fill:#f0fdf4}.head4{fill:#fff7ed}.step{fill:#fff;stroke:#cbd5e1;stroke-width:1.6}.text{font-family:Arial,'Noto Sans SC',sans-serif;fill:#111827}.title{font-size:22px;font-weight:700}.laneText{font-size:15px;font-weight:700}.small{font-size:13px;fill:#475569}.label{font-size:14px;font-weight:700}.line{stroke:#2563eb;stroke-width:2.4;fill:none;marker-end:url(#arrow-webui)}.dash{stroke:#64748b;stroke-width:2;fill:none;stroke-dasharray:5 5;marker-end:url(#arrow-webui)}
+    </style>
+  </defs>
+  <rect class="bg" width="760" height="560" rx="20"/>
+  <text class="text title" x="34" y="38">WebUI 典型调用泳道图</text>
+  <text class="text small" x="34" y="62">前端只访问统一入口路径，实际业务由 Manager、WebSearch 和 Runtime 承接。</text>
+
+  <rect class="lane" x="34" y="86" width="138" height="430"/><rect class="head" x="34" y="86" width="138" height="38"/><text class="text laneText" x="87" y="110" text-anchor="middle">用户</text>
+  <rect class="lane" x="172" y="86" width="146" height="430"/><rect class="head2" x="172" y="86" width="146" height="38"/><text class="text laneText" x="245" y="110" text-anchor="middle">Traefik</text>
+  <rect class="lane" x="318" y="86" width="146" height="430"/><rect class="head3" x="318" y="86" width="146" height="38"/><text class="text laneText" x="391" y="110" text-anchor="middle">WebUI</text>
+  <rect class="lane" x="464" y="86" width="128" height="430"/><rect class="head" x="464" y="86" width="128" height="38"/><text class="text laneText" x="528" y="110" text-anchor="middle">Manager</text>
+  <rect class="lane" x="592" y="86" width="134" height="430"/><rect class="head4" x="592" y="86" width="134" height="38"/><text class="text laneText" x="659" y="110" text-anchor="middle">后端能力</text>
+
+  <rect class="step" x="56" y="150" width="92" height="42" rx="9"/><text class="text label" x="102" y="176" text-anchor="middle">访问首页</text>
+  <rect class="step" x="192" y="150" width="106" height="42" rx="9"/><text class="text label" x="245" y="176" text-anchor="middle">匹配 /</text>
+  <rect class="step" x="340" y="150" width="102" height="42" rx="9"/><text class="text label" x="391" y="169" text-anchor="middle">返回前端</text><text class="text small" x="391" y="185" text-anchor="middle">port 80</text>
+  <path class="line" d="M148 171 H192"/><path class="line" d="M298 171 H340"/>
+
+  <rect class="step" x="338" y="244" width="106" height="54" rx="9"/><text class="text label" x="391" y="264" text-anchor="middle">提交操作</text><text class="text small" x="391" y="282" text-anchor="middle">实例/RAG/配置</text>
+  <rect class="step" x="481" y="244" width="94" height="54" rx="9"/><text class="text label" x="528" y="264" text-anchor="middle">处理业务</text><text class="text small" x="528" y="282" text-anchor="middle">/v1</text>
+  <path class="line" d="M444 271 H481"/>
+
+  <rect class="step" x="338" y="340" width="106" height="54" rx="9"/><text class="text label" x="391" y="360" text-anchor="middle">发起搜索</text><text class="text small" x="391" y="378" text-anchor="middle">/ws-api</text>
+  <rect class="step" x="612" y="340" width="94" height="54" rx="9"/><text class="text label" x="659" y="360" text-anchor="middle">WebSearch</text><text class="text small" x="659" y="378" text-anchor="middle">内部 /v1</text>
+  <path class="line" d="M444 367 H592"/>
+  <text class="text small" x="512" y="357" text-anchor="middle">Traefik 转换路径</text>
+
+  <rect class="step" x="481" y="435" width="94" height="54" rx="9"/><text class="text label" x="528" y="455" text-anchor="middle">返回实例</text><text class="text small" x="528" y="473" text-anchor="middle">访问地址</text>
+  <rect class="step" x="612" y="435" width="94" height="54" rx="9"/><text class="text label" x="659" y="455" text-anchor="middle">Runtime</text><text class="text small" x="659" y="473" text-anchor="middle">gateway/webui</text>
+  <path class="dash" d="M481 462 H444 C410 462 410 402 391 394"/>
+  <path class="line" d="M444 462 H612"/>
+  <text class="text small" x="526" y="425" text-anchor="middle">/traefik/nineclaw/{id}</text>
+</svg>

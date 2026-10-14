@@ -1,0 +1,45 @@
+{
+  "name": "StackOverflow",
+  "description": "StackOverflow 问答搜索（Stack Exchange API）",
+  "enabled": true,
+  "url_base": "https://stackoverflow.com",
+  "request": {
+    "url": "https://api.stackexchange.com/2.3/search/advanced",
+    "method": "GET",
+    "params": [
+      {
+        "key": "q",
+        "value": "{query}"
+      },
+      {
+        "key": "site",
+        "value": "stackoverflow"
+      },
+      {
+        "key": "pagesize",
+        "value": "10"
+      },
+      {
+        "key": "sort",
+        "value": "relevance"
+      },
+      {
+        "key": "order",
+        "value": "desc"
+      },
+      {
+        "key": "filter",
+        "value": "default"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "NineClaw-WebSearch/1.0"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

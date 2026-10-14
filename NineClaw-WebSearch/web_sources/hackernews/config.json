@@ -1,0 +1,22 @@
+{
+  "name": "HackerNews",
+  "description": "Hacker News 帖子搜索（Algolia 官方 API）",
+  "enabled": true,
+  "url_base": "https://news.ycombinator.com",
+  "tags": ["social"],
+  "request": {
+    "url": "https://hn.algolia.com/api/v1/search",
+    "method": "GET",
+    "params": [
+      { "key": "query", "value": "{query}" },
+      { "key": "hitsPerPage", "value": "20" },
+      { "key": "tags", "value": "story" }
+    ],
+    "headers": [
+      { "key": "User-Agent", "value": "NineClaw-WebSearch/1.0" }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunknineclaw_docs||=[]).push([[4583],{6866(n,r,t){t.r(r),t.d(r,{default:()=>s});var u=t(6347),e=t(6025),i=t(4848);function s(){return(0,i.jsx)(u.rd,{to:(0,e.Ay)("/guide/intro")})}}}]);

@@ -1,0 +1,34 @@
+name: NineClaw-QYRAG
+version: 4.1.0
+description: "User-uploaded file RAG knowledge base retrieval. Prefer for internal/professional documents, policies, manuals, reports, contracts, and named knowledge bases; combine with WebSearch for current public context."
+author: Hermes Agent
+provides_tools:
+  - QYRAG_answer
+  - QYRAG_retrieve
+  - QYRAG_check_sufficient_context
+  - QYRAG_grep_document
+  - QYRAG_expand_context
+  - QYRAG_save_document
+  # - QYRAG_health_check
+requires_env:
+  - name: QYRAG_BASE_URL
+    description: "QYRAG server URL (default: http://172.18.33.24:8513)"
+    secret: false
+  - name: QYRAG_API_KEY
+    description: API key for QYRAG authentication
+    secret: true
+  - name: QYRAG_OUTPUT_DIR
+    description: "Default directory for saved document materials (default: qyrag_downloads)"
+    secret: false
+  - name: QYRAG_DATASETS
+    description: "Allowed datasets, preferably JSON list like '[{\"name\":\"政策库\",\"id\":\"dataset_id\"}]'; object and name=id CSV are also accepted"
+    secret: false
+  - name: QYRAG_SELECTED_DATASETS
+    description: "Default selected dataset IDs or names (JSON list, comma-separated IDs, or name=id CSV); must be in QYRAG_DATASETS when an allowlist is configured"
+    secret: false
+  - name: QYRAG_ANSWER_PATH
+    description: "QYRAG answer endpoint (default: /api/v1/chat); the endpoint must return an answer and optional references"
+    secret: false
+  - name: QYRAG_MAX_RETRIES_HINT
+    description: "Suggested max targeted keyword retries before stopping (default: 3)"
+    secret: false

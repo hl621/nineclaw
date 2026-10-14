@@ -1,0 +1,29 @@
+{
+  "name": "OpenAlex学术",
+  "description": "OpenAlex 开放学术文献搜索",
+  "enabled": true,
+  "url_base": "https://openalex.org",
+  "request": {
+    "url": "https://api.openalex.org/works",
+    "method": "GET",
+    "params": [
+      {
+        "key": "search",
+        "value": "{query}"
+      },
+      {
+        "key": "per-page",
+        "value": "10"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "NineClaw-WebSearch/1.0"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}

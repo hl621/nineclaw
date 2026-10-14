@@ -1,0 +1,14 @@
+# Fixed image-level MCP configuration. Manager injects the four bridge env
+# values when it creates an instance. Hermes expands ${...} before starting the
+# stdio process, and only this explicit env allow-list reaches the bridge.
+mcp_servers:
+  workflow_workspace:
+    command: /opt/hermes/.venv/bin/python
+    args: ["/opt/nineclaw/workspace_mcp_server.py"]
+    env:
+      NINECLAW_MANAGER_URL: "${NINECLAW_MANAGER_URL}"
+      NINECLAW_WORKSPACE_INSTANCE_ID: "${NINECLAW_WORKSPACE_INSTANCE_ID}"
+      NINECLAW_WORKSPACE_BRIDGE_TOKEN: "${NINECLAW_WORKSPACE_BRIDGE_TOKEN}"
+      NINECLAW_WORKSPACE_DIR: "${NINECLAW_WORKSPACE_DIR}"
+    timeout: 120
+    connect_timeout: 60

@@ -1,0 +1,25 @@
+{
+  "name": "360搜索",
+  "description": "360 web search",
+  "enabled": true,
+  "url_base": "https://www.so.com",
+  "request": {
+    "url": "https://www.so.com/s",
+    "method": "GET",
+    "params": [
+      {
+        "key": "q",
+        "value": "{query}"
+      }
+    ],
+    "headers": [
+      {
+        "key": "User-Agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+      }
+    ],
+    "body": "",
+    "body_type": "application/json",
+    "proxy_pool": []
+  }
+}
